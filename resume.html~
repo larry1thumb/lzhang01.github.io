@@ -1,0 +1,42 @@
+<html>
+
+<head>
+<title>Resume</title>
+
+</head>
+
+<body>
+
+<div id="title">
+  <h1>Larry Zhang</h1>
+  <h2>larryzhang25@gmail.com</h2>
+  <h2>http://lzhang01.github.io/</h2>
+</div>
+
+<p class="header">Professional Experience</p>
+<p class="subheader">Research Technician, Jean Mayer USDA HNRCA; Boston, MA-- May 2013-Present</p>
+<ul class="text">
+<li>Ran experiments involving diet and colorectal cancer in humans and mice</li>
+<li>Provided animal care, genotyping, mating, feeding, surgery.</li>
+<li>Compile and analyze data from experiments</li>
+</ul>
+<p class="subheader">Dining Services, Tufts University; Medford MA-- September 2012-January 2014</p>
+<ul class="text">
+<li>Kept track of dishes, cups, and utensils around the dining hall</li>
+<li>Filled in where needed around the dishroom</li>
+<li>Maintained cleanliness of the dishroom</li>
+</ul>
+<p class="subheader">Shadowing Doctor in HIV Clinic and Infection Disease Ward, Stony Brook Hospital; Stony Brook, NY-- Summer 2012</p>
+<ul class="text">
+<li>Worked closely with the on-call doctor and helped out with patients</li>
+<li>Went around with medical students on rounds</li>
+<li>Completed HIPAA training</li>
+</ul>
+<p class="subheader">Radiology Department Volunteer, Stony Brook Hospital; Stony Brook; NY -- 2008-2011</p>
+<ul class="text">
+<li>Provided maintenance for X-ray flims, machines</li>
+<li>Shadowed radiologists and assisted with patients</li>
+<li>Scanned X-rays into computers and organized the scans</li>
+</ul>
+
+
