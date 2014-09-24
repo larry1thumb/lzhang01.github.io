@@ -12,6 +12,12 @@
   <h2>larryzhang25@gmail.com</h2>
   <h2>http://lzhang01.github.io/</h2>
 </div>
+<p class="header">Education</p>
+<p class="subheader">Tufts University, School of Arts and Sciences</p>
+<p>Bachelor of Science in Biochemistry, 2015<br/>
+Minor in Computer Science</p>
+<p class="subheader">Relevant Coursework</p>
+<p>C++, Data Structures, Web Programming, Discrete Mathematics</p>
 
 <p class="header">Professional Experience</p>
 <p class="subheader">Research Technician, Jean Mayer USDA HNRCA; Boston, MA-- May 2013-Present</p>
@@ -38,5 +44,11 @@
 <li>Shadowed radiologists and assisted with patients</li>
 <li>Scanned X-rays into computers and organized the scans</li>
 </ul>
+<p class="header">Skills</p>
+<p>Familiar in C++, Data Structures, HTML and web design.<br/>
+Experienced with SDS-PAGE, PCR, and other Biotechnical tasks</p>
+<p class="header">Interests/Activities</p>
+<p>Intramural Basketball, Ultimate, Tennis. Biking, Fitness training, Cooking.</p>
 
+ 
 
