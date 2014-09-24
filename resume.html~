@@ -2,7 +2,7 @@
 
 <head>
 <title>Resume</title>
-
+<link href="stylesheet.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -50,5 +50,6 @@ Experienced with SDS-PAGE, PCR, and other Biotechnical tasks</p>
 <p class="header">Interests/Activities</p>
 <p>Intramural Basketball, Ultimate, Tennis. Biking, Fitness training, Cooking.</p>
 
- 
+</body>
+</html> 
 
