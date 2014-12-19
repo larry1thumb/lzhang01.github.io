@@ -1,7 +1,8 @@
 body {
 	background-color: #F0F8FF;
-	font-family: "Helvetica";
+	font-family: Helvetica;
 	text-align: center;
+	max-width: 800px;
 }
 
 h1 {
