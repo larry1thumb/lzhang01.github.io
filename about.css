@@ -1,16 +1,20 @@
-
-
 body {
 	padding-top: 70px;
 	padding-bottom: 70px;
-	background: url(images/Plunge.jpg);
 	background-color: black;
 	min-height: 100%;
 	min-width: 100%;
 	background-repeat: no-repeat;
-	background-size: cover;
 }
 
+h1 {
+	color: white;
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;	
+	font-family: "Baskerville";
+	}
+	
 .homeBackground {
 	background-color: rgba(255, 255, 255, 0.5);
 	color: inherit;
@@ -18,10 +22,19 @@ body {
 	height: 250px;
 }
 
-.quote {
-	font-family: 'Century Gothic'; 
-	font-size: small;
+.ToC {
+	color: white;
 }
+.container {
+	max-width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.container-fluid img {
+	max-width: 100%
+}
+
 .right-align {
 	color: gray;
 	position: absolute; bottom: 0; right: 5px;
