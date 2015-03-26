@@ -14,17 +14,15 @@ h1 {
 	margin-right: auto;	
 	font-family: "Baskerville";
 	}
-	
-.homeBackground {
-	background-color: rgba(255, 255, 255, 0.5);
-	color: inherit;
-	width: 500px;
-	height: 250px;
+
+.text {
+	color: white;
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;	
+	font-family: "Baskerville";
 }
 
-.ToC {
-	color: white;
-}
 .container {
 	max-width: 900px;
 	margin-left: auto;
