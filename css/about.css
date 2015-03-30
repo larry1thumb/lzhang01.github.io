@@ -4,7 +4,17 @@ body {
 	background-color: black;
 	min-height: 100%;
 	min-width: 100%;
-	background-repeat: no-repeat;
+}
+
+div {
+	display: block;
+}
+
+.header {
+	border-color: #b2b2b2;
+	border-bottom-style: solid;
+	border-bottom-width: 5px;
+	margin-bottom: 20px;
 }
 
 h1 {
@@ -17,6 +27,7 @@ h1 {
 
 .text {
 	color: white;
+	font-size: 14pt;
 	max-width: 700px;
 	margin-left: auto;
 	margin-right: auto;	
@@ -24,9 +35,33 @@ h1 {
 }
 
 .container {
-	max-width: 900px;
+	max-width: 700px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.inline-photo {
+	border-color: #b2b2b2;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-right-width: 0px;
+	border-left-width: 0px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 20px 0;
+}
+
+.section-photo-break {
+	height: 1000px;
+	background-attachment: fixed;
+	background-position: center 44px;
+	background-repeat: repeat-y;
+	background-size: cover;
+	border-bottom-width: 0px;
+	border-bottom-style: initial;
+	border-bottom-color: initial;
 }
 
 .container-fluid img {
