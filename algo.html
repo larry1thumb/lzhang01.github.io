@@ -37,8 +37,8 @@
 
     <title>Larry Zhang Homepage</title>
     <!-- Bootstrap -->
-    <link href="bootstrap.min.css" rel="stylesheet">
-    <link href="ultimate.css" rel="stylesheet">
+    <link href="UltimateCH/bootstrap.min.css" rel="stylesheet">
+    <link href="UltimateCH/ultimate.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -56,7 +56,7 @@
             <h3>General Idea</h3>
             <p>As opposed to a general divide and conquer algorithm, the Ultimate CH Algorithm uses a divide, merge and conquer algorithm.  We split the points into upper and lower groups using the xmin and xmax and find the hulls of both individually.</p>
             <p>To find the upperhull, we find the median x-coordinate and find an upper bridge connecting the two medians.  We then recurse and find the medians of the left and right subgroups until the full upperhull is found.</p>
-            <img src="median.png" alt="medians" class="center" style="width:40%">
+            <img src="UltimateCH/median.png" alt="medians" class="center" style="width:40%">
             <p class="caption">The brown line is the connection between xmin and xmax. The orange line is the median line of the x-coordinates of the upper point set.</p> 
             <p>In having a sub O(n log n) algorithm, we know we cannot sort at all so we can afford any O(n) step.  The two big steps of bridge finding and median finding can both be found in O(n) time.  As we will see later, there are O(log h) levels of recursion giving the Ultimate Convex Hull Algorithm a total running time of O(n log h).</p>
 
@@ -71,21 +71,21 @@
               <li>Either x is median rank, or we use x as pivot</li>
               <li>Depending on how the rank of x compares to the median rank, we recurse on the lower or higher side</li>
             </ol>
-            <img src="medianfinding.png" alt="medianofmedians" class="center" style="width:40%">
+            <img src="UltimateCH/medianfinding.png" alt="medianofmedians" class="center" style="width:40%">
             <p class="caption">Visualization of median of medians algorithm.  Arrow from x to y means that x > y.</p>
 
             <h3>Bridge Finding</h3>
             <p>In finding an upper bridge to connect left and right sides of the median line, the algorithm relies on randomly pairing up points and using the median slope as a guess for the bridge. By performing a linear sweep using the median slope from above the point set, we can deterine whether the true slope of the upper bridge is greater than or less than the median guess slope.  If the sweep guess slope hits the left subgroup first, the guess slope must be greater than the true slope of the bridge, and the reverse is true for the right subgroup.</p>
             <p>Since we use the median as a guess, half of the lines must have a greater/lesser slope than the guess.  Depending on which side the sweep hits first, we can discard one point from all of the steeper or less steep lines.  By throwing out a constant fraction, in this case 1/4, of lines each time, we achieve linear time in bridge finding.</p>
-            <img src="upperbridge.png" alt="upperbridge" class="center" style="width:40%">
+            <img src="UltimateCH/upperbridge.png" alt="upperbridge" class="center" style="width:40%">
             <p class="caption">Upper bridge of left and right subgroups</p>
             <h3>Putting It All Together</h3>
             <p>With median and bridge finding time, as long we can show that there are only O(log h) levels of recursion, we can show that the total time complexity is O(n log h).</p>
             <p>After finding a bridge, you can temporality connect the bridge to other points on the convex hull (after the first round, those would just be xmin and xmax).  With this "fake hull" you can throw out all points that are contained within. We can recurse on the remaining points that have not been tossed out to find new bridges until you complete the upperhull.</p>  
             <p>If a bridge is found on both sides during each recursion we achieve O(log h) depth.  If we don't find a new bridge on one side of the recursion, that means that we were able to throw out half of the points at that level since the bridge was created using the median x-coordinate of points.  With out h bridges to find, and recursing on two subproblems or tossing out n/2 points at each level, we acheive O(log h) depth.</p>
             <div class="twoimg">
-              <img src="before.png" alt="fakehull-before" class="inline"style="width:40%">
-              <img src="after.png" alt="fakehull-after" class="inline" style="width:39%">
+              <img src="UltimateCH/before.png" alt="fakehull-before" class="inline"style="width:40%">
+              <img src="UltimateCH/after.png" alt="fakehull-after" class="inline" style="width:39%">
             </div>
             <p class="caption">Creating a "fake hull" and removing internal points after one step of bridge finding</p>
         </div>
@@ -95,6 +95,6 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="bootstrap.min.js"></script>
+    <script src="UltimateCH/bootstrap.min.js"></script>
   </body>
 </html>
