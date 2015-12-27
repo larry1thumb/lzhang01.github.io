@@ -1,0 +1,128 @@
+body {
+	padding-top: 70px;
+	padding-bottom: 70px;
+	background-color: #F0F0F0;
+	min-height: 100%;
+	min-width: 100%;
+}
+
+div {
+	display: block;
+}
+
+.header {
+	border-color: #000000;
+	border-bottom-style: solid;
+	border-bottom-width: 5px;
+	margin-bottom: 20px;
+}
+
+h1 {
+	color: black;
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;	
+	font-family: "Baskerville";
+	}
+
+.text {
+	color: white;
+	font-size: 14pt;
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;	
+	font-family: "Baskerville";
+}
+
+.text-first
+{
+	color: white;
+	font-size: 14pt;
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: "Baskerville";
+	margin-top: 20px;
+	border-top-style: solid;
+	border-color: #b2b2b2;
+	border-top-width: 1px;
+	padding: 20px 0;
+}
+
+.container {
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.inline-photo {
+	border-color: #b2b2b2;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-right-width: 0px;
+	border-left-width: 0px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 20px 0;
+}
+
+.section-photo-break {
+	height: 1000px;
+	background-attachment: fixed;
+	background-position: center 44px;
+	background-repeat: repeat-y;
+	background-size: cover;
+	border-bottom-width: 0px;
+	border-bottom-style: initial;
+	border-bottom-color: initial;
+}
+
+.container-fluid img {
+	max-width: 100%
+}
+
+.left-align {
+	color: gray;
+	position: absolute; bottom: 0; left: 5px;
+}
+
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.caption {
+	text-align: center;
+	font-style: italic;
+}
+
+.inline {
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 40%;
+}
+
+.twoimg {
+	text-align: center;
+}
+
+section {
+	margin: 10px 0;
+	position: relative;
+}
+
+canvas {
+	margin-top: 10px auto;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}

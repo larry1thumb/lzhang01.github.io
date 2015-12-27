@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <p class="navbar-brand">Larry Zhang</p>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="ultimatech.html">Introduction <span class="sr-only">(current)</span></a></li>
+        <li><a href="algo.html">Algorithm</a></li>
+        <li><a href="applet.html">Applet</a></li>
+        <li><a href="ref.html">References</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<nav role="navigation" class="navbar navbar-default navbar-fixed-bottom">
+            <p class="left-align">Designed and Built by Larry Zhang</p>
+</nav>
+
+    <title>Larry Zhang Homepage</title>
+    <!-- Bootstrap -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="ultimate.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="header">
+        <h1>Kirkpatrick-Seidel's Prune-and-Search Convex Hull Algorithm</h1>
+      </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <h2>Introduction</h2>
+              <p> In Computational Geometry, a convex hull of a set X of points in a Euclidean plane is the smallest number of points that contain all points of X.</p>
+              <img src="convexhull.png" alt="Convex Hull" class="center" style="width:30%">
+              <p class="caption">Example of a convex hull of a point set</p>
+              <p>Prior to the Ultimate Convex Hull Algorithm by Kirkpatrick and Seidel, most convex hull algorithms relied on sorting, making each algorithm take at least O(n log n) time.  Two output sensitive algorithms, the Jarvis March and Quickhull had time complexities of O(nh) with h being the number of points on the convex hull, however in the worst case these algorithms can have O(n<sup>2</sup>)</p>
+              <p>With the Ultimate Convex Hull Algorithm, we have a time complexity of O(n log h).  Though it is also an output sensitive algorithm, its worst case is asymptotically to the sorting algorithms.</p>
+        </div>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap.min.js"></script>
+  </body>
+</html>
