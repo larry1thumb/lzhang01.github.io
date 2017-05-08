@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="bootstrap-3.3.7/favicon.ico">
+
+    <title>Exact String Matching</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="bootstrap-3.3.7/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="kmpz.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="bootstrap-3.3.7/assets/js/ie-emulation-modes-warning.js"></script>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="kmpz.html">Exact String Matching</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="kmpz.html">Introduction</a></li>
+            <li><a href="z.html">Z Algorithm</a></li>
+            <li><a href="kmp.html">KMP Algorithm</a></li>
+            <li class="active"><a href="#">Applet</a></li>
+            <li><a href="realtime.html">Real time KMP</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="intro cour">
+        <h1>Applet</h1>
+        <input type="text" id="input_pattern" placeholder="Enter Pattern Here">
+        <button id="zalgo">Z Algorithm</button>
+        <button id="kmp">KMP Algorithm</button>
+        <button id="zbtn">Generate Z values</button>
+        <button id="spbtn">Generate sp' values</button>
+        <button id="clear">Restart</button>
+        <table class = "table" id="values">
+        </table>
+        <input type="text" id="input_text" placeholder="Enter Text Here">
+        <button id="runz">Find matches</button>
+        <button id="runkmp">Find matches</button>
+
+        <p id="solution">
+        </p>
+        <p id="solutionkmp">
+        </p>
+      </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="bootstrap-3.3.7/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="bootstrap-3.3.7/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="kmpz.js"></script>
+  </body>
+</html>

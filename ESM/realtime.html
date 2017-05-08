@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="bootstrap-3.3.7/favicon.ico">
+
+    <title>Exact String Matching</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="bootstrap-3.3.7/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="kmpz.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="bootstrap-3.3.7/assets/js/ie-emulation-modes-warning.js"></script>
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="kmpz.html">Exact String Matching</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class><a href="kmpz.html">Introduction</a></li>
+            <li><a href="z.html">Z Algorithm</a></li>
+            <li><a href="kmp.html">KMP Algorithm</a></li>
+            <li><a href="app.html">Applet</a></li>
+            <li class="active"><a href="#">Real time KMP</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="intro">
+        <h1>Real-Time String Matching</h1>
+        <h3>A Deterministic Finite-State Matcher</h3>
+        <h2>Real-Time Computing</h2>
+        <p class="lead">
+          Here we define real-time method to do constant amount of work per
+          step. In exact string matching, that would mean we do a constant
+          amount of work for every new symbol. We could read in new symbols one
+          at a time and spend constant time on exact string matching. Clearly
+          a real-time method is also a linear time method, but linear time
+          methods aren't quite under the same constraints. 
+        </p>
+        <p class="lead">
+          KMP is a linear time algorithm, but does not qualify as a real-time
+          one. By using <em>sp'</em> values we are able to shift over
+          unnecessary comparisons after a mismatch, guarantee that the
+          prefix of pattern P from the mismatch will match text T, and
+          guarantee a different letter in the pattern is used in the next
+          comparison. However, we cannot guarantee that the next comparison
+          will be a match.  Therefore some index k in T might be compared 
+          multiple times, in fact up to |P| times with different letters in P.
+          We can see here that despite KMP being bounded by 2m comparisons (where m is the size of T), it is not guaranteed to do constant time
+          for every letter.
+        </p>
+        <h2>Extending Knuth-Morris-Pratt</h2>
+        <p class="lead">
+          Similar to regular KMP, preprocessing will be used for the real-time
+          extension of KMP. The preprocessing is quite similar to regular KMP
+          preprocessing. Instead of <em>sp'<sub>i</sub></em> values, we will
+          extend these to <em>sp'<sub>(i, x)</sub></em> values where 
+          <em>x</em> is a letter in the alphabet with the same definition as
+          <em>sp'<sub>i</sub></em> except the second condition is that
+          P<sub><em>sp'<sub>i</sub></em></sub> == <em>x</em>. These new
+          <em>sp'<sub>(i, x)</sub></em> values can still be computed in linear
+          time and will enable us to do extend KMP into a real-time method.
+        </p>
+        <p class="lead">
+          In the regular KMP algorithm, if a character of T is involved in a
+          match, it is never examined a second time. The problem lies when
+          a mismatch occurs. While running this algorithm, let's say a
+          mismatch occurs at character T<sub>k</sub> == x and
+          P<sub>i+1</sub>. P will be shifted <em>i - sp'<sub>(i, x)</sub></em>
+          places. Like regular KMP, the shift guarantees that the prefix
+          P[1..sp'<sub>(i, x)</sub>] matches the current substring in T. With
+          the real-time method, we can also guarantee that the next character
+          T<sub>k</sub>, and P<sub><em>sp'<sub>(i,x)</sub>+1</em></sub>
+          match so this comparison can be skipped. The next comparison will
+          be between P<sub><em>sp'<sub>(i,x)</sub>+2</em></sub> and
+          T<sub>k+1</sub>.
+        </p>
+        <p class="lead">
+          With this new method, we can claim it is a real-time method because
+          it never reexamines a position in T regardless if it was involved in
+          a mathc or mismatch. After preprocessing we only visit each character
+          in T once. It can read in the text one character at a time and spend
+          constant time for each position. 
+        </p>
+        <h2>Real-Time KMP</h2>
+        <p class="lead">
+          Preprocessing and running real-time KMP is very similar to regular
+          KMP. We use Z-values to determine <em>sp'<sub>(i, x)</sub></em>
+          values as before and run the algorithm in the same way as before.
+          One drawback from the real-time KMP method that isn't found in Z
+          or KMP, is that the time and space complexities are dependent on
+          alphabet size. Z and KMP are both alphabet-independent linear time
+          methods.
+        </p>
+      </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="bootstrap-3.3.7/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="bootstrap-3.3.7/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

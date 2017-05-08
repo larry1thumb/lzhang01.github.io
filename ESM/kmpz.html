@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="bootstrap-3.3.7/favicon.ico">
+
+    <title>Exact String Matching</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="bootstrap-3.3.7/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="kmpz.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="bootstrap-3.3.7/assets/js/ie-emulation-modes-warning.js"></script>
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Exact String Matching</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Introduction</a></li>
+            <li><a href="z.html">Z Algorithm</a></li>
+            <li><a href="kmp.html">KMP Algorithm</a></li>
+            <li><a href="app.html">Applet</a></li>
+            <li><a href="realtime.html">Real time KMP</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="intro">
+        <h1>Problem Space</h1>
+          <p class="lead">Exact string matching is a very practical algorithm 
+          that serves many utilities.</p> 
+          <p class="lead">Given a pattern P, we want to find all instances of 
+          P in some text T. Common uses of exact string matching include:</p>
+        <ul class="lead">
+          <li>Ctrl-F in word processors</li>
+          <li>Matching in genomic sequences</li>
+          <li>grep in Unix</li>
+          <li>Internet Search</li>
+        </ul>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>i</th>
+              <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+              <td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td>
+              <td>13</td><td>14</td><td>15</td><td>16</td><td>17</td>
+              <td>18</td><td>19</td><td>20</td><td>21</td><td>22</td>
+              <td>23</td><td>24</td><td>25</td><td>26</td><td>27</td>
+            </tr>
+            <tr class="text-primary">
+              <th>Text</th>
+              <td>I</td><td>L</td><td>O</td><td>V</td><td>E</td><td>A</td>
+              <td>L</td><td>G</td><td>O</td><td><strong>A</strong></td>
+              <td><strong>N</strong></td><td><strong>D</strong></td><td>G</td>
+              <td>R</td><td>A</td><td>P</td><td>H</td><td>S</td>
+              <td><strong>A<strong></td><td><strong>N</strong></td>
+              <td><strong>D</strong></td><td>T</td><td>H</td><td>E</td>
+              <td>O</td><td>R</td><td>Y</td>
+            </tr>
+            <tr class="text-danger">
+              <th>Pattern</th>
+              <td>A</td>
+              <td>N</td>
+              <td>D</td>
+             </tr>
+            </tbody>
+          </table>
+          <h4>Naive Method</h4>
+            <p class="lead">The intuitive way of solving this problem is to 
+            compare P to every position in T and check for a match. This method
+             will take quadratic time on the size of text T. This brute force
+             method will be used as the baseline for improvement with other 
+             algorithms.</p>
+            <p>*If P is trivially small, or nearly the size of T, the brute 
+            force algorithm is very efficient, finishing in linear time. Let's 
+            say <em>m</em> is the size of T and <em>n</em> is the size of P, 
+            if n = O(1), we need to do O(m) comparisons of length O(1), 
+            similarly if n &rarr; m, we need to do O(1) comparisons of length 
+            O(m) for the same O(m) time complexity.</p>
+          <h2>Linear Time Algorithms</h2>
+            <p class="lead">Discussed more in the tabs above, two linear time
+            algorithms, the Z algorithm and the Knuth-Morris-Pratt
+            Algorithm were introduced to better the efficiency of string search.
+            Though neither algorithm is regularly used (Boyer-Moore is
+            generally favored) both still have their utility. The Z algorithm
+            is an easily understood algorithm that is asymptotically identical
+            in worst case performance to more complex methods. KMP while only
+            offering marginal advantages over Z in general use, not only has
+            historical significance, but also is the foundation for more
+            complex problem extensions such as real time string matching and
+            matching on a set of patterns.</p>
+      </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="bootstrap-3.3.7/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="bootstrap-3.3.7/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="bootstrap-3.3.7/favicon.ico">
+
+    <title>Exact String Matching</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="bootstrap-3.3.7/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="kmpz.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="bootstrap-3.3.7/assets/js/ie-emulation-modes-warning.js"></script>
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="kmpz.html">Exact String Matching</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="kmpz.html">Introduction</a></li>
+            <li><a href="z.html">Z Algorithm</a></li>
+            <li class="active"><a href="#">KMP Algorithm</a></li>
+            <li><a href="app.html">Applet</a></li>
+            <li><a href="realtime.html">Real time KMP</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="intro">
+        <h1>Knuth Morris Pratt</h1>
+        <p class="lead">
+          Unlike the Z algorithm, the idea behind KMP is rooted as an extension
+          of the naive (brute force) algorithm. The main idea is that after
+          finding a full or partial match, it is likely we can shift more than
+          just one index without sacrificing solution accuracy. By preprocessing
+          and identifying where the mismatch is in P, we are able to optimize
+          shift distance to acheive a linear time algorithm.
+        </p>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>i</th>
+              <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+              <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td>
+              <td>12</td><td>13</td><td>14</td><td>15</td><td>16</td>
+            </tr>
+            <tr class="text-primary">
+              <th>Text</th>
+              <td>X</td>
+              <td>Y</td>
+              <td>A</td>
+              <td>B</td>
+              <td>C</td>
+              <td>X</td>
+              <td>A</td>
+              <td>B</td>
+              <td>C</td>
+              <td>X</td>
+              <td>A</td>
+              <td>D</td>
+              <td>C</td>
+              <td>D</td>
+              <td>Q</td>
+              <td>F</td>
+            </tr>
+            <tr class="text-danger">
+              <th>Pattern</th>
+              <td></td>
+              <td></td>
+              <td>A</td>
+              <td>B</td>
+              <td>C</td>
+              <td>X</td>
+              <td>A</td>
+              <td>B</td>
+              <td>C</td>
+              <td>D</td>
+              <td>E</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+             </tr>
+            <tr class="text-danger">
+              <th>Pattern (shift)</th>
+              <td></td>
+              <td></td>
+              <td>></td>
+              <td>></td>
+              <td>></td>
+              <td>></td>
+              <td>A</td>
+              <td>B</td>
+              <td>C</td>
+              <td>X</td>
+              <td>A</td>
+              <td>B</td>
+              <td>C</td>
+              <td>D</td>
+              <td>E</td>
+              <td></td>
+             </tr>
+            </tbody>
+          </table>
+
+          <h2>Preprocessing the Pattern</h2>
+          <p class="lead">
+            We define a new <em>sp'<sub>i</sub></em> value that will be used to
+            determine how far we shift after a mismatch. 
+            <em>sp'<sub>i</sub>(P)</em> is the length of the longest suffix 
+            ending at i that matches a prefix of P. The second condition is 
+            that <em>P<sub>i+1</sub></em> &ne; 
+            <em>P<sub>sp'<sub>i</sub>+1</sub></em>. This is to say that,
+            without loss of generality, if there is a substring length 3 
+            that is the prefix and suffix of P[1...k], if both copies are
+            followed by the same character, 3 is an invalid
+            <em>sp'<sub>i</sub></em> value. <br><br>
+            Stated differently, given P[1..3] == P[k-2..k], if P[4] == P[k+1],
+            then 3 is invalid as a <em>sp'<sub>i</sub></em> value. In fact
+            <em>sp'<sub>i</sub></em> < 3. 
+          </p>
+          <table class="table">
+            <tbody>
+              <tr>
+                <th>i</th>
+                <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+                <td>6</td><td>7</td><td>8</td><td>9</td>
+              </tr>
+              <tr class="text-danger">
+                <th>P</th>
+                <td>A</td>
+                <td>B</td>
+                <td>C</td>
+                <td>X</td>
+                <td>A</td>
+                <td>B</td>
+                <td>C</td>
+                <td>D</td>
+                <td>E</td>
+               </tr>
+              <tr class="zvalue">
+                <th>Z</th>
+                <td>/</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>3</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+               </tr>
+              <tr class="spvalue">
+                <th><em>sp'<sub>i</sub></em></th>
+                <td>/</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>3</td>
+                <td>0</td>
+                <td>0</td>
+               </tr>
+              </tbody>
+            </table>
+            <p class = "lead">
+              Notice here that even though at index 6, the suffix AB matches
+              with the prefix of P, both the suffix and prefix AB are
+              followed by the same character C. Without noticing this, we can
+               try to say that <em>sp'<sub>6</sub></em> = 2, but then  
+              <em>P<sub>7</sub></em> = <em>P<sub>sp'<sub>6</sub>+1</sub></em>,
+               C = C, which is invalid. Next we can check if there is a suffix
+               of length 1 that matches the prefix of P. P<sub>6</sub> &ne;
+               P<sub>1</sub>, B &ne; A, so we conclude that there is no suffix
+               ending at index 6 that satisfies these rules, so
+              <em>sp'<sub>6</sub></em> = 0.
+            </p>
+            <p class = "lead">
+              On the otherhand, at index 7, the suffix ABC matches the prefix
+              of P, and they are followed by different characters. <br>
+              <em>P<sub>8</sub></em> &ne; 
+              <em>P<sub>sp'<sub>7</sub>+1</sub></em>, D &ne; X, which is
+              valid, so <em>sp'<sub>7</sub></em> = 3.
+            </p>
+            <h3> Using <em>sp'</em> values to solve Exact String Matching</h3>
+            <p class = "lead">
+              When a mismatch is encountered at P<sub>i+1</sub> with some 
+              character <em>c</em> in T, the next comparison will be between
+              the P<sub><em>sp'<sub>i</sub></em>+1</sub> and <em>c</em>.
+              Instead of shifting just one index, we are able to skip
+              unnecessary comparisons by shifting <em>i - sp'<sub>i</sub></em>
+              positions. The number of comparisons done by KMP is bounded by
+              2m, where m is the size of the text.
+            </p>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th>i</th>
+                  <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+                  <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+                  <td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+                  <td>16</td>
+                </tr>
+                <tr class="text-primary">
+                  <th>Text</th>
+                  <td>X</td>
+                  <td>Y</td>
+                  <td>A</td>
+                  <td>B</td>
+                  <td>C</td>
+                  <td>X</td>
+                  <td>A</td>
+                  <td>B</td>
+                  <td>C</td>
+                  <td style="border-bottom: 2px solid green">X</td>
+                  <td style="border-bottom: 2px solid green">A</td>
+                  <td>D</td>
+                  <td>C</td>
+                  <td>D</td>
+                  <td>Q</td>
+                  <td>F</td>
+                </tr>
+                <tr class="text-danger">
+                  <th>Pattern</th>
+                  <td></td>
+                  <td></td>
+                  <td>A</td>
+                  <td>B</td>
+                  <td>C</td>
+                  <td>X</td>
+                  <td>A</td>
+                  <td>B</td>
+                  <td>C</td>
+                  <td style="border-bottom: 2px solid red">D</td>
+                  <td>E</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                 </tr>
+                <tr class="text-danger">
+                  <th>Pattern (shift)</th>
+                  <td></td>
+                  <td></td>
+                  <td>></td>
+                  <td>></td>
+                  <td>></td>
+                  <td>></td>
+                  <td>A</td>
+                  <td>B</td>
+                  <td>C</td>
+                  <td style="border-bottom: 2px solid green">X</td>
+                  <td style="border-bottom: 2px solid green">A</td>
+                  <td>B</td>
+                  <td>C</td>
+                  <td>D</td>
+                  <td>E</td>
+                  <td></td>
+                 </tr>
+                </tbody>
+              </table>
+              <p class="lead">
+                Here we find a mismatch at P<sub>8</sub> between X and D.
+                Since <em>sp'<sub>7</sub></em> = 3, the next comparison will
+                be between P<sub>3+1=4</sub> and the character that caused the
+                mismatch, X. We continue matching the pattern to the text from
+                here.
+              </p>
+            <h3> Calculating <em>sp'</em> values </h3>
+            <p class="lead">
+              As Z-values correlate with the beginning of Z-boxes, <em>sp'</em>
+              values correlate with the end of Z-boxes. We need to iterate
+              through the pattern and set <em>sp'<sub>i</sub></em> equal to
+              Z<sub><em>j</em></sub> if <em>j</em> is the smallest position
+              that maps to <em>i</em>. If there is no such <em>j</em> then
+              <em>sp'<sub>i</sub></em> = 0. Position <em>j</em> maps to 
+              position <em>i</em> if <em>i</em> is the right end of a Z-box
+              starting at <em>j</em>. <br> Formally, <em>j</em> maps to
+              <em>i</em> if <em>i</em> = <em>j</em> + Z<sub>j</sub> - 1.
+            </p>
+            <img src="zbox.png">
+      </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="bootstrap-3.3.7/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="bootstrap-3.3.7/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
