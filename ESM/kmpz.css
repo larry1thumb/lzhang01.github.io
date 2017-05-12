@@ -62,3 +62,25 @@ body {
 #solution {
 	font-size: 24px;
 }
+
+.orange {
+    color: orange;
+}
+
+.green {
+    color: green;
+}
+
+.equation {
+    font: 24px Arial;
+}
+
+.step {
+    font-size: 18px;
+    letter-spacing: 0.5em;
+}
+
+#work {
+    font-size: 18px;
+    font-family: Courier;
+}

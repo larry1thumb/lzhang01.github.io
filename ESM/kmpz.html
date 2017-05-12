@@ -94,29 +94,55 @@
             </tbody>
           </table>
           <h4>Naive Method</h4>
-            <p class="lead">The intuitive way of solving this problem is to 
-            compare P to every position in T and check for a match. This method
-             will take quadratic time on the size of text T. This brute force
-             method will be used as the baseline for improvement with other 
-             algorithms.</p>
-            <p>*If P is trivially small, or nearly the size of T, the brute 
-            force algorithm is very efficient, finishing in linear time. Let's 
-            say <em>m</em> is the size of T and <em>n</em> is the size of P, 
-            if n = O(1), we need to do O(m) comparisons of length O(1), 
-            similarly if n &rarr; m, we need to do O(1) comparisons of length 
-            O(m) for the same O(m) time complexity.</p>
+            <p class="lead">
+              The intuitive way of solving this problem is to 
+              compare P to every position in T and check for a match. This 
+              method will take quadratic time on the size of text T. This 
+              brute force method will be used as the baseline for improvement 
+              with other algorithms.
+            </p>
+            <p>
+              *If P is trivially small, or nearly the size of T, the brute 
+              force algorithm is very efficient, finishing in linear time. 
+              Let's say <em>m</em> is the size of T and <em>n</em> is the size 
+              of P, if n = O(1), we need to do O(m) comparisons of length O(1)
+              , similarly if n &rarr; m, we need to do O(1) comparisons of 
+              length O(m) for the same O(m) time complexity. If n is a
+              constant fraction of m then the brute force time complexity will
+              be O(m<sup>2</sup>)
+            </p>
           <h2>Linear Time Algorithms</h2>
-            <p class="lead">Discussed more in the tabs above, two linear time
-            algorithms, the Z algorithm and the Knuth-Morris-Pratt
-            Algorithm were introduced to better the efficiency of string search.
-            Though neither algorithm is regularly used (Boyer-Moore is
-            generally favored) both still have their utility. The Z algorithm
-            is an easily understood algorithm that is asymptotically identical
-            in worst case performance to more complex methods. KMP while only
-            offering marginal advantages over Z in general use, not only has
-            historical significance, but also is the foundation for more
-            complex problem extensions such as real time string matching and
-            matching on a set of patterns.</p>
+            <p class="lead">
+              Discussed more in the tabs above, two linear time
+              algorithms, the Z algorithm and the Knuth-Morris-Pratt
+              Algorithm were introduced to better the efficiency of string 
+              search. Though neither algorithm is regularly used (Boyer-Moore 
+              is generally favored) both still have their utility. The Z
+              algorithm is an easily understood algorithm that is
+              asymptotically identical in worst case performance to more
+              complex methods. KMP while only offering marginal advantages
+              over Z in general use, not only has historical significance, but
+              also is the foundation for more complex problem extensions such
+              as real time string matching and matching on a set of patterns.
+            </p>
+            <p class="lead">
+              All three aforementioned algorithms preprocess the pattern in
+              order to achieve their superior time complexities. Since the
+              algorithms preprocess the pattern and not the text, O(n) time
+              preprocessing will not affect overall time complexity very much
+              and allows us to use the same preprocessed pattern over multiple
+              text searches.
+            </p>
+            <p class="lead">
+              Boyer-Moore is the standard benchmark for string search. With the
+              addition of the Galil Rule, Boyer-Moore runs with worst case
+              linear time like Z and KMP, but the expected run time is
+              sublinear, O(m/n). <br> Reference: 
+              <a href= "https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_string_search_algorithm">
+                Boyer-Moore
+              </a>
+            </p>
+
       </div>
 
     </div><!-- /.container -->

@@ -56,11 +56,11 @@
       <div class="intro">
         <h1>Knuth Morris Pratt</h1>
         <p class="lead">
-          Unlike the Z algorithm, the idea behind KMP is rooted as an extension
-          of the naive (brute force) algorithm. The main idea is that after
-          finding a full or partial match, it is likely we can shift more than
-          just one index without sacrificing solution accuracy. By preprocessing
-          and identifying where the mismatch is in P, we are able to optimize
+          The idea behind KMP is rooted as an extension of the naive (brute
+          force) algorithm. The main idea is that after finding a full or
+          partial match, it is likely we can shift more than just one index
+          without missing any possible matches. By preprocessing and
+          identifying where the mismatch is in P, we are able to optimize
           shift distance to acheive a linear time algorithm.
         </p>
         <table class="table">
@@ -211,6 +211,20 @@
               <em>P<sub>sp'<sub>7</sub>+1</sub></em>, D &ne; X, which is
               valid, so <em>sp'<sub>7</sub></em> = 3.
             </p>
+            <h3> Calculating <em>sp'</em> values </h3>
+            <p class="lead">
+              As Z-values correlate with the beginning of Z-boxes, <em>sp'</em>
+              values correlate with the end of Z-boxes. We need to iterate
+              through the pattern and set <em>sp'<sub>i</sub></em> equal to
+              Z<sub><em>j</em></sub> if <em>j</em> is the smallest position
+              that maps to <em>i</em>. If there is no such <em>j</em> then
+              <em>sp'<sub>i</sub></em> = 0. Position <em>j</em> maps to 
+              position <em>i</em> if <em>i</em> is the right end of a Z-box
+              starting at <em>j</em>. <br> Formally, <em>j</em> maps to
+              <em>i</em> if <em>i</em> = <em>j</em> + Z<sub>j</sub> - 1.
+            </p>
+            <img src="zbox.png">
+
             <h3> Using <em>sp'</em> values to solve Exact String Matching</h3>
             <p class = "lead">
               When a mismatch is encountered at P<sub>i+1</sub> with some 
@@ -296,19 +310,6 @@
                 mismatch, X. We continue matching the pattern to the text from
                 here.
               </p>
-            <h3> Calculating <em>sp'</em> values </h3>
-            <p class="lead">
-              As Z-values correlate with the beginning of Z-boxes, <em>sp'</em>
-              values correlate with the end of Z-boxes. We need to iterate
-              through the pattern and set <em>sp'<sub>i</sub></em> equal to
-              Z<sub><em>j</em></sub> if <em>j</em> is the smallest position
-              that maps to <em>i</em>. If there is no such <em>j</em> then
-              <em>sp'<sub>i</sub></em> = 0. Position <em>j</em> maps to 
-              position <em>i</em> if <em>i</em> is the right end of a Z-box
-              starting at <em>j</em>. <br> Formally, <em>j</em> maps to
-              <em>i</em> if <em>i</em> = <em>j</em> + Z<sub>j</sub> - 1.
-            </p>
-            <img src="zbox.png">
       </div>
 
     </div><!-- /.container -->

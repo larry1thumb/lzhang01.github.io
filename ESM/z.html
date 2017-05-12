@@ -101,26 +101,26 @@
               </tr>
               <tr>
                 <th class="text-danger">P</th>
-                <td>&nbsp;Z</td>
-                <td>&nbsp;Z</td>
-                <td>&nbsp;Y</td>
-                <td>&nbsp;Z</td>
-                <td>&nbsp;Z</td>
+                <td>&nbsp;X</td>
+                <td>&nbsp;X</td>
                 <td>&nbsp;Y</td>
                 <td>&nbsp;X</td>
+                <td>&nbsp;X</td>
+                <td>&nbsp;Y</td>
+                <td>&nbsp;V</td>
                 <td>&nbsp;A</td>
-                <td>&nbsp;Z</td>
-                <td>&nbsp;Z</td>
-                <td>&nbsp;Y</td>
-                <td>&nbsp;Z</td>
-                <td>&nbsp;Z</td>
+                <td>&nbsp;X</td>
+                <td>&nbsp;X</td>
                 <td>&nbsp;Y</td>
                 <td>&nbsp;X</td>
+                <td>&nbsp;X</td>
+                <td>&nbsp;Y</td>
+                <td>&nbsp;V</td>
                 <td>&nbsp;B</td>
-                <td>&nbsp;Z</td>
-                <td>&nbsp;Z</td>
-                <td>&nbsp;Z</td>
-                <td>&nbsp;Z</td>
+                <td>&nbsp;X</td>
+                <td>&nbsp;X</td>
+                <td>&nbsp;X</td>
+                <td>&nbsp;X</td>
                 <td>&nbsp;Y</td>
               </tr>
               <tr>
@@ -160,8 +160,8 @@
             <span class ="text-success">$</span>
             is a special character that doesn't appear in the alphabet of
             <span class ="text-danger">P</span> or 
-            <span class="text-primary">T</span>. If we can build a for
-            this entire string, if the Z value is ever equal to the length of
+            <span class="text-primary">T</span>. If we can build a Z-array for
+            the entire string, if the Z value is ever equal to the length of
             <span class ="text-danger">P</span> then an exact string match
             has been found.
           </p>
@@ -177,7 +177,7 @@
             <em>r<sub>i</sub></em> = rightmost endpoint for all Z-boxes 
             beginning at or before <em>i</em>
             <br>
-            <em>l<sub>i</sub></em> = left endpoint of any Z-box that ends at
+            <em>l<sub>i</sub></em> = left endpoint of the Z-box that ends at
             <em>r<sub>i</sub></em></p>
             <br>
 
@@ -209,26 +209,26 @@
               </tr>
               <tr>
                 <th class="text-danger">P</th>
-                <td>&nbsp;Z</td>
-                <td>&nbsp;Z</td>
-                <td>&nbsp;Y</td>
-                <td>&nbsp;Z</td>
-                <td>&nbsp;Z</td>
+                <td>&nbsp;X</td>
+                <td>&nbsp;X</td>
                 <td>&nbsp;Y</td>
                 <td>&nbsp;X</td>
+                <td>&nbsp;X</td>
+                <td>&nbsp;Y</td>
+                <td>&nbsp;V</td>
                 <td>&nbsp;A</td>
-                <td>&nbsp;Z</td>
-                <td>&nbsp;Z</td>
-                <td>&nbsp;Y</td>
-                <td>&nbsp;Z</td>
-                <td>&nbsp;Z</td>
+                <td>&nbsp;X</td>
+                <td>&nbsp;X</td>
                 <td>&nbsp;Y</td>
                 <td>&nbsp;X</td>
+                <td>&nbsp;X</td>
+                <td>&nbsp;Y</td>
+                <td>&nbsp;V</td>
                 <td>&nbsp;B</td>
-                <td>&nbsp;Z</td>
-                <td>&nbsp;Z</td>
-                <td>&nbsp;Z</td>
-                <td>&nbsp;Z</td>
+                <td>&nbsp;X</td>
+                <td>&nbsp;X</td>
+                <td>&nbsp;X</td>
+                <td>&nbsp;X</td>
                 <td>&nbsp;Y</td>
               </tr>
               <tr>
@@ -331,25 +331,25 @@
         </p>
         <div class="row">
           <div class="col-md-6">
-            <span class="lead">No match</span>
+            <span class="lead"><strong>No match</strong></span>
             <table class="table">
               <tbody class="monospace">
                 <tr>
                   <th>i</th>
                   <td>&nbsp;1</td>
-                  <td>&nbsp;<mark>2</mark></td>
-                  <td>&nbsp;3</td>
+                  <td>&nbsp;2</td>
+                  <td>&nbsp;<mark>3</mark></td>
                   <td>&nbsp;4</td>
                   <td>&nbsp;5</td>
                   <td>&nbsp;6</td>
                 </tr>
                 <tr>
                   <th class="text-danger">P</th>
-                  <td>&nbsp;Z</td>
-                  <td>&nbsp;Z</td>
+                  <td>&nbsp;X</td>
+                  <td>&nbsp;X</td>
                   <td style="border-bottom: 2px solid red">&nbsp;Y</td>
-                  <td>&nbsp;Z</td>
-                  <td>&nbsp;Z</td>
+                  <td>&nbsp;X</td>
+                  <td>&nbsp;X</td>
                   <td>&nbsp;Y</td>
                 </tr>
                 <tr>
@@ -382,9 +382,10 @@
 
               </tbody>
             </table>
-            <span class="lead">No new Z-box</span>
-            <ul class="lead" style="list-style: none">
+            <span class="lead"><strong>No new Z-box</strong></span>
+            <ul class="equation" style="list-style: none">
               <li><em>k</em> = 3;</li>
+              <li><br></li>
               <li>Z<sub><em>k</em></sub> = 0;</li>
               <li><em>l<sub>k</sub></em> = <em>l<sub>k-1</sub></em> = 2;</li> 
               <li><em>r<sub>k</sub></em> = <em>r<sub>k-1</sub></em> = 2;</li> 
@@ -402,11 +403,11 @@
                 </tr>
                 <tr>
                   <th class="text-danger">P</th>
-                  <td>&nbsp;Z</td>
-                  <td>&nbsp;Z</td>
+                  <td>&nbsp;X</td>
+                  <td>&nbsp;X</td>
                   <td>&nbsp;Y</td>
-                  <td>&nbsp;Z</td>
-                  <td>&nbsp;Z</td>
+                  <td>&nbsp;X</td>
+                  <td>&nbsp;X</td>
                   <td>&nbsp;Y</td>
                 </tr>
                 <tr>
@@ -440,9 +441,9 @@
             </table>
           </div>          
           <div class="col-md-6">
-            <span class="lead">
+            <span class="lead"><strong>
               Match found, match characters until a miss.
-            </span>
+            </strong></span>
             <table class="table">
               <tbody class="monospace">
                 <tr>
@@ -457,13 +458,13 @@
                 </tr>
                 <tr>
                   <th class="text-danger">P</th>
-                  <td style="border-bottom: 2px solid green">&nbsp;Z</td>
-                  <td style="border-bottom: 2px solid green">&nbsp;Z</td>
+                  <td>&nbsp;X</td>
+                  <td>&nbsp;X</td>
+                  <td>&nbsp;Y</td>
+                  <td style="border-bottom: 2px solid green">&nbsp;X</td>
+                  <td style="border-bottom: 2px solid green">&nbsp;X</td>
                   <td style="border-bottom: 2px solid green">&nbsp;Y</td>
-                  <td style="border-bottom: 2px solid blue">&nbsp;Z</td>
-                  <td style="border-bottom: 2px solid blue">&nbsp;Z</td>
-                  <td style="border-bottom: 2px solid blue">&nbsp;Y</td>
-                  <td style="border-bottom: 2px solid red">&nbsp;X</td>
+                  <td style="border-bottom: 2px solid red">&nbsp;V</td>
                 </tr>
                 <tr>
                   <th class="zvalue">Z<sub><em>i</em></sub></th>
@@ -497,11 +498,12 @@
                 </tr>
               </tbody>
             </table>
-            <span class="lead">
+            <span class="lead"><strong>
               Z-box of length 3 found.
-            </span>
-            <ul class="lead" style="list-style: none">
+            </strong></span>
+            <ul class="equation" style="list-style: none">
               <li><em>k</em> = 4;</li>
+              <li><br></li>
               <li>Z<sub><em>k</em></sub> = 3;</li>
               <li><em>l</em> = k = 4;</li> 
               <li><em>r</em> = <em>l</em> + Z<sub><em>k</em></sub> - 1 = 
@@ -521,13 +523,13 @@
                 </tr>
                 <tr>
                   <th class="text-danger">P</th>
-                  <td>&nbsp;Z</td>
-                  <td>&nbsp;Z</td>
-                  <td>&nbsp;Y</td>
-                  <td>&nbsp;Z</td>
-                  <td>&nbsp;Z</td>
+                  <td>&nbsp;X</td>
+                  <td>&nbsp;X</td>
                   <td>&nbsp;Y</td>
                   <td>&nbsp;X</td>
+                  <td>&nbsp;X</td>
+                  <td>&nbsp;Y</td>
+                  <td>&nbsp;V</td>
                 </tr>
                 <tr>
                   <th class="zvalue">Z<sub><em>i</em></sub></th>
@@ -621,21 +623,21 @@
             </tr>
             <tr>
               <th class="text-danger">P</th>
-              <td>&nbsp;Z</td>
-              <td>&nbsp;Z</td>
-              <td>&nbsp;Y</td>
-              <td>&nbsp;Z</td>
-              <td>&nbsp;Z</td>
+              <td>&nbsp;X</td>
+              <td>&nbsp;X</td>
               <td>&nbsp;Y</td>
               <td>&nbsp;X</td>
-              <td>&nbsp;A</td>
-              <td>&nbsp;Z</td>
-              <td>&nbsp;Z</td>
+              <td>&nbsp;X</td>
               <td>&nbsp;Y</td>
-              <td style="border-bottom: 2px solid orange">&nbsp;Z</td>
-              <td style="border-bottom: 2px solid orange">&nbsp;Z</td>
-              <td style="border-bottom: 2px solid orange">&nbsp;Y</td>
+              <td>&nbsp;V</td>
+              <td>&nbsp;A</td>
+              <td>&nbsp;X</td>
+              <td>&nbsp;X</td>
+              <td>&nbsp;Y</td>
               <td style="border-bottom: 2px solid orange">&nbsp;X</td>
+              <td style="border-bottom: 2px solid orange">&nbsp;X</td>
+              <td style="border-bottom: 2px solid orange">&nbsp;Y</td>
+              <td style="border-bottom: 2px solid orange">&nbsp;V</td>
               <td>&nbsp;B</td>
             </tr>
             <tr>
@@ -699,14 +701,15 @@
         </table>  
         <div class="row">
           <div class="col-md-6">      
-            <ul class="lead" style="list-style: none">
+            <ul class="equation" style="list-style: none">
               <li><em>k</em> = 12;</li>
               <li>
                 <em>k'</em> = <em>k</em> - <em>l</em> + 1 = 12 - 9 + 1 = 3;
               </li>
-              <li>Z<sub><em>k'</em></sub> = 3;</li>
-              <li>&beta; = 4;</li>
+              <li class="green">Z<sub><em>k'</em></sub> = 3;</li>
+              <li class="orange">&beta; = 4;</li>
               <li>Z<sub><em>k'</em></sub> < &beta;;</li>
+              <li><br></li>
               <li>Z<sub><em>k</em></sub> = Z<sub><em>k'</em></sub> = 3;</li>
               <li><em>l<sub>k</sub></em> = <em>l<sub>k-1</sub></em> = 9;</li>
               <li><em>r<sub>k</sub></em> = <em>r<sub>k-1</sub></em> = 15;</li>
@@ -727,10 +730,10 @@
                 <tr>
                   <th class="text-danger">P</th>
                   <td>&nbsp;Y</td>
-                  <td>&nbsp;Z</td>
-                  <td>&nbsp;Z</td>
-                  <td>&nbsp;Y</td>
                   <td>&nbsp;X</td>
+                  <td>&nbsp;X</td>
+                  <td>&nbsp;Y</td>
+                  <td>&nbsp;V</td>
                   <td>&nbsp;B</td>
                 </tr>
                 <tr>
@@ -795,26 +798,26 @@
             </tr>
             <tr>
               <th class="text-danger">P</th>
-              <td>&nbsp;Z</td>
-              <td>&nbsp;Z</td>
-              <td>&nbsp;Y</td>
-              <td>&nbsp;Z</td>
-              <td>&nbsp;Z</td>
+              <td>&nbsp;X</td>
+              <td>&nbsp;X</td>
               <td>&nbsp;Y</td>
               <td>&nbsp;X</td>
+              <td>&nbsp;X</td>
+              <td>&nbsp;Y</td>
+              <td>&nbsp;V</td>
               <td>&nbsp;A</td>
-              <td>&nbsp;Z</td>
-              <td>&nbsp;Z</td>
-              <td>&nbsp;Y</td>
-              <td>&nbsp;Z</td>
-              <td>&nbsp;Z</td>
+              <td>&nbsp;X</td>
+              <td>&nbsp;X</td>
               <td>&nbsp;Y</td>
               <td>&nbsp;X</td>
+              <td>&nbsp;X</td>
+              <td>&nbsp;Y</td>
+              <td>&nbsp;V</td>
               <td>&nbsp;B</td>
-              <td>&nbsp;Z</td>
-              <td>&nbsp;Z</td>
-              <td style="border-bottom: 2px solid orange">&nbsp;Z</td>
-              <td style="border-bottom: 2px solid orange">&nbsp;Z</td>
+              <td>&nbsp;X</td>
+              <td>&nbsp;X</td>
+              <td style="border-bottom: 2px solid orange">&nbsp;X</td>
+              <td style="border-bottom: 2px solid orange">&nbsp;X</td>
               <td style="border-bottom: 2px solid orange">&nbsp;Y</td>
             </tr>
             <tr>
@@ -893,14 +896,15 @@
         </table>  
         <div class="row">
           <div class="col-md-6">      
-            <ul class="lead" style="list-style: none">
+            <ul class="equation" style="list-style: none">
               <li><em>k</em> = 19;</li>
               <li>
                 <em>k'</em> = <em>k</em> - <em>l</em> + 1 = 19 - 18 + 1 = 2;
               </li>
-              <li>Z<sub><em>k'</em></sub> = 1;</li>
-              <li>&beta; = 3;</li>
+              <li class="green">Z<sub><em>k'</em></sub> = 1;</li>
+              <li class="orange">&beta; = 3;</li>
               <li>Z<sub><em>k'</em></sub> &geq; &beta;;</li>
+              <li><br></li>
               <li>Z<sub><em>k</em></sub> = 3;</li>
               <li><em>l<sub>k</sub></em> = k = 19;</li>
               <li><em>r<sub>k</sub></em> = <em>l</em> + 
@@ -922,10 +926,10 @@
                 <tr>
                   <th class="text-danger">P</th>
                   <td>&nbsp;B</td>
-                  <td>&nbsp;Z</td>
-                  <td>&nbsp;Z</td>
-                  <td>&nbsp;Z</td>
-                  <td>&nbsp;Z</td>
+                  <td>&nbsp;X</td>
+                  <td>&nbsp;X</td>
+                  <td>&nbsp;X</td>
+                  <td>&nbsp;X</td>
                   <td>&nbsp;Y</td>
                 </tr>
                 <tr>
