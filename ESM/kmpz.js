@@ -421,7 +421,7 @@ $(document).ready(function(){
             work += "r[" + (step+1) + "] = " + r[step] + "</div>";
         } else if (cases[step] == 2) {
             work += "<div class='col-md-8'>"
-            work += "Case 2a: new Z-box contained within existing Z-box";
+            work += "Case 2a: k contained within existing Z-box";
             work += "<p style='margin-left:98px'>Substring at k' matches the rest of the Z-box containing k<br>";
             work += "Z[k'] < &beta; &nbsp; ";
             work += "Z[k'] = " + z[kprime] + " &nbsp; ";
@@ -468,7 +468,11 @@ $(document).ready(function(){
     });
 
     $("#zstepback").click(function(){
-        step = step - 2;
+        if (step > 0) {
+            step = step - 2;
+        } else {
+            step = step - 1;
+        }
         $("#zstep").empty();
         $("#zvals").empty();
         $("#work").empty();
@@ -572,13 +576,13 @@ $(document).ready(function(){
 	       	html +="</td>";
 	    }
 	    html +="</tr><tr><th>Z</th>";
-	    for (var i = 0; i < z.length; i++) {
+	    for (var i = 0; i < p.length; i++) {
 	      	html += "<td>";
 	       	html += z[i];
 	       	html +="</td>";
 	    }
 	    html +="</tr><tr><th>sp'</th>";
-	    for (var i = 0; i < sp.length; i++) {
+	    for (var i = 0; i < p.length; i++) {
 	      	html += "<td>";
 	       	html += sp[i];
 	       	html +="</td>";
