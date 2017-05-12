@@ -126,12 +126,12 @@
               as real time string matching and matching on a set of patterns.
             </p>
             <p class="lead">
-              All three aforementioned algorithms preprocess the pattern in
-              order to achieve their superior time complexities. Since the
-              algorithms preprocess the pattern and not the text, O(n) time
-              preprocessing will not affect overall time complexity very much
-              and allows us to use the same preprocessed pattern over multiple
-              text searches.
+              All three aforementioned algorithms split Exact String Matching
+              into two phases, the preprocessing stage and the search stage.
+              Since the algorithms preprocess the pattern and not the text, 
+              O(n) time preprocessing will not affect overall time complexity
+              very much and allows us to use the same preprocessed pattern
+              over multiple text searches.
             </p>
             <p class="lead">
               Boyer-Moore is the standard benchmark for string search. With the

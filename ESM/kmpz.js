@@ -194,6 +194,9 @@ $(document).ready(function(){
         }
         str += "<br>i &nbsp;";
         for (var i = 1; i < plength+1; i++) {
+            if (i > 9) {
+                str += "<strong>";
+            }
             var j = i%10;
             if (step+1 == i) {
                 str += "<span style='background-color:aqua'>";
@@ -205,6 +208,9 @@ $(document).ready(function(){
                 str += "</span>";
             } else if (cases[step] > 1 && i == kprime+1) {
                 str += "</span>";
+            }
+            if (i > 9 && i == plength) {
+                str += "</strong>"
             }
         }
  
@@ -361,22 +367,36 @@ $(document).ready(function(){
         }
         vals += "<br>l &nbsp;0";
         for (var i = 0; i < step; i++) { //l values
+            if (l[i+1] > 9) {
+                vals += "<strong>";
+            }
             if (i == step-1) {
                 vals += "<span style='background-color:aqua'>"
             }
             vals += l[i+1]%10;
             if (i == step-1) {
                 vals += "</span>";
-            }        }
+            }
+            if (l[i+1] > 9 && i == step-1) {
+                vals += "</strong>"
+            }
+        }
         vals += "<br>r &nbsp;0";
         for (var i = 0; i < step; i++) { //r values
+            if (r[i+1] > 9) {
+                vals += "<strong>";
+            }
             if (i == step-1) {
                 vals += "<span style='background-color:aqua'>"
             }
             vals += r[i+1]%10;
             if (i == step-1) {
                 vals += "</span>";
-            }        }
+            }
+            if (r[i+1] > 9 && i == step-1) {
+                vals += "</strong>";
+            }        
+        }
         var work = "";
         if (cases[step] == 0) {
             work += "<div class='col-md-8'>"
