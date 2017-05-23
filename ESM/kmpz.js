@@ -1,7 +1,8 @@
 $(document).ready(function(){
 	var z = [0];
-    var sp = [];
+    var sp = [0];
     var step = 0;
+    var kmpstep = 0;
     $("#zbtn").hide();
     $("#spbtn").hide();
     $("#clear").hide();
@@ -13,17 +14,22 @@ $(document).ready(function(){
     $("#solutionkmp").hide();
     $("#zstepbtn").hide();
     $("#zstepback").hide();
+    $("#kmpstep").hide();
+    $("#next").hide();
     $("#zstep").hide();
     $("#zvals").hide();
     $("#work").hide();
     $("#disclaimer").hide();
-
+    $("#kmprestart").hide();
 
 
 
     $("#zbtn").click(function(){
     	$("#values").empty();
     	var p = $("#input_pattern").val();
+        if (p != "ABCDABD") {
+            $("#input_text").val('');
+        }
     	p = p.replace(/\s+/g, '');
     	p = p.toUpperCase();
      	var l = [0];
@@ -58,9 +64,9 @@ $(document).ready(function(){
     					r[i] = r[i-1];
     				} else { //Case 2b
                         var m = beta;
-                        var n = i;
+                        var n = r[i-1];
                         var Q = 0;
-                        while (p[m] == p[n+1]) {
+                        while (p[m] == p[n]) {
                             Q++;
                             m++;
                             n++;
@@ -77,12 +83,18 @@ $(document).ready(function(){
     		}
     	}
 
-		var html = "<tbody><tr><th>P</th>";
+		var html = "<tbody><tr><th>i</th>";
         for (var i = 0; i < p.length; i++) {
         	html += "<td>";
-        	html += p[i];
+        	html += i+1;
         	html +="</td>";
     	}
+        html += "</tr><tr><th>P</th>"
+        for (var i = 0; i < p.length; i++) {
+            html += "<td>";
+            html += p[i];
+            html +="</td>";
+        }        
     	html +="</tr><tr><th>Z</th>";
         for (var i = 0; i < p.length; i++) {
         	html += "<td>";
@@ -157,9 +169,9 @@ $(document).ready(function(){
                     } else { //Case 2b
                         cases[i] = 3;
                         var m = beta;
-                        var n = i;
+                        var n = r[i-1];
                         var Q = 0;
-                        while (p[m] == p[n+1]) {
+                        while (p[m] == p[n]) {
                             Q++;
                             m++;
                             n++;
@@ -193,15 +205,17 @@ $(document).ready(function(){
             }
         }
         str += "<br>i &nbsp;";
+
         for (var i = 1; i < plength+1; i++) {
-            if (i > 9) {
-                str += "<strong>";
-            }
-            var j = i%10;
+
+            var j = i;
             if (step+1 == i) {
                 str += "<span style='background-color:aqua'>";
             } else if (cases[step] > 1 && i == kprime+1) {
                 str += "<span style='background-color:aquamarine'>";
+            }
+            if (i < 10) {
+                str += "&nbsp;";
             }
             str += j;
             if (step+1 == i) {
@@ -209,11 +223,9 @@ $(document).ready(function(){
             } else if (cases[step] > 1 && i == kprime+1) {
                 str += "</span>";
             }
-            if (i > 9 && i == plength) {
-                str += "</strong>"
-            }
+            str += " ";
         }
- 
+
         // Pattern background for different cases
         if (cases[step] == 0) { //Case 1 no match
             str += "<br>P &nbsp;";
@@ -221,7 +233,9 @@ $(document).ready(function(){
                 if (i == 0) {
                     str += "<span style='background-color:red'>"
                 }
+                str += "&nbsp;";
                 str += p[i];
+                str += " ";
                 if (i == 0) {
                     str += "</span>"
                 }
@@ -232,7 +246,9 @@ $(document).ready(function(){
                 if (step == i) {
                     str += "<span style='background-color:red'>"
                 }
+                str += "&nbsp;";
                 str += p[i];
+                str += " ";
                 if (step == i) {
                     str += "</span>"
                 }
@@ -246,7 +262,9 @@ $(document).ready(function(){
                 if (i == z[step]) {
                     str += "<span style='background-color:red'>";
                 }
+                str += "&nbsp;";
                 str += p[i];
+                str += " ";
 
                 if (i == z[step]) {
                     str += "</span>";
@@ -264,7 +282,9 @@ $(document).ready(function(){
                 if (i == z[step] + step) {
                     str += "</span><span style='background-color:red'>";
                 }
+                str += "&nbsp;";
                 str += p[i];
+                str += " ";
 
                 if (i == z[step] + step) {
                     str += "</span>";
@@ -283,7 +303,9 @@ $(document).ready(function(){
                 if (i == kprime && z[kprime] == 0) {
                     str += "<span style='background-color:orange'>"
                 }
+                str += "&nbsp;";
                 str += p[i];
+                str += " ";
 
                 if (i == kprime + z[kprime]-1 && z[kprime] > 0) {
                     str += "</span><span style='background-color:orange'>"
@@ -300,7 +322,9 @@ $(document).ready(function(){
                 if (i == step) {
                     str += "<span style='background-color:orange'>";
                 } 
+                str += "&nbsp;";
                 str += p[i];
+                str += " ";
 
                 if (i == step + beta - 1) {
                     str += "</span>"
@@ -318,7 +342,9 @@ $(document).ready(function(){
                 if (i == z[step]) {
                     str += "</span><span style='background-color:red'>";
                 }
+                str += "&nbsp;";
                 str += p[i];
+                str += " ";
                 if (i == z[step]) {
                     str += "</span>";
                 }
@@ -335,7 +361,9 @@ $(document).ready(function(){
                 if (i == z[step] + step) {
                     str += "</span><span style='background-color:red'>";
                 }
+                str += "&nbsp;";
                 str += p[i];
+                str += " ";
 
                 if (i == z[step] + step) {
                     str += "</span>";
@@ -347,71 +375,74 @@ $(document).ready(function(){
         } else {
             str += "<br>P &nbsp;";
             for (var i = 0; i < plength; i++) {
+                str += "&nbsp;";
                 str += p[i];
+                str += " ";
             }
             str += "&nbsp";
             str += "<br>P &nbsp;";
             for (var i = 0; i < plength; i++) {
+                str += "&nbsp;";
                 str += p[i];
+                str += " ";
             }            
         }
-        var vals = "Z &nbsp;/";
+        var vals = "Z &nbsp; /&nbsp;";
         for (var i = 0; i < step; i++) { //Z values
             if (i == step-1) {
                 vals += "<span style='background-color:aqua'>"
             }
-            vals += z[i+1]%10;
+            vals += "&nbsp;";
+            vals += z[i+1];
+            vals += " ";
             if (i == step-1) {
                 vals += "</span>";
             }
         }
-        vals += "<br>l &nbsp;0";
+        vals += "<br>l &nbsp; 0&nbsp;";
         for (var i = 0; i < step; i++) { //l values
-            if (l[i+1] > 9) {
-                vals += "<strong>";
-            }
             if (i == step-1) {
                 vals += "<span style='background-color:aqua'>"
             }
-            vals += l[i+1]%10;
+            if (l[i+1] < 10) {
+                vals += "&nbsp;";
+            }
+            vals += l[i+1];
+            vals += " "
             if (i == step-1) {
                 vals += "</span>";
-            }
-            if (l[i+1] > 9 && i == step-1) {
-                vals += "</strong>"
             }
         }
-        vals += "<br>r &nbsp;0";
+        vals += "<br>r &nbsp; 0&nbsp;";
         for (var i = 0; i < step; i++) { //r values
-            if (r[i+1] > 9) {
-                vals += "<strong>";
-            }
             if (i == step-1) {
                 vals += "<span style='background-color:aqua'>"
             }
-            vals += r[i+1]%10;
+             if (r[i+1] < 10) {
+                vals += "&nbsp;";
+            }
+            vals += r[i+1];
+            vals += " "
             if (i == step-1) {
                 vals += "</span>";
-            }
-            if (r[i+1] > 9 && i == step-1) {
-                vals += "</strong>";
             }        
         }
         var work = "";
         if (cases[step] == 0) {
             work += "<div class='col-md-8'>"
-            work += "Case 1: No Match";
-            work += "<p style='margin-left:86px'>Z is 0<br>";
-            work += "copy over l and r</p>"
-            work += "</div><div class='col-md-4'>"
+            work += "Case 1: k = " + (step+1) + "&nbsp; r = " + r[step-1] + "&nbsp; k > r";
+            work += "<p style='margin-left:86px'>No Match<br>";
+            work += "Z is 0<br>";
+            work += "copy over l and r<br>&nbsp;<br></p>";
+            work += "</div><div class='col-md-4'>";
             work += "Z[" + (step+1) + "] = 0";
             work += "<br>l[" + (step+1) + "] = " + l[step-1] + "<br>";
             work += "r[" + (step+1) + "] = " + r[step-1] + "</div>";
 
         } else if (cases[step] == 1) {
             work += "<div class='col-md-8'>"
-            work += "Case 1: Match Found";
-            work += "<p style='margin-left:86px'>Continue matching until a miss<br>"; 
+            work += "Case 1: k = " + (step+1) + "&nbsp; r = " + r[step-1] + "&nbsp; k > r";
+            work += "<p style='margin-left:86px'>Match Found<br>";
             work += "Z is the number of matches<br>" ;
             work += "Set l to the current index <br>";
             work += "Set r to the end of the new Z-box</p>";
@@ -421,7 +452,7 @@ $(document).ready(function(){
             work += "r[" + (step+1) + "] = " + r[step] + "</div>";
         } else if (cases[step] == 2) {
             work += "<div class='col-md-8'>"
-            work += "Case 2a: k contained within existing Z-box";
+            work += "Case 2a: k = " + (step+1) + "&nbsp; r = " + r[step-1] + "&nbsp; k &le; r";
             work += "<p style='margin-left:98px'>Substring at k' matches the rest of the Z-box containing k<br>";
             work += "Z[k'] < &beta; &nbsp; ";
             work += "Z[k'] = " + z[kprime] + " &nbsp; ";
@@ -434,24 +465,23 @@ $(document).ready(function(){
             work += "r[" + (step+1) + "] = " + r[step-1] + "</div>";   
         } else if (cases[step] == 3) {
             work += "<div class='col-md-8'>"
-            work += "Case 2b: new Z-box contained within existing Z-box";
-            work += "<p style='margin-left:98px'>Substring at k' matches the rest of the Z-box containing k<br>";
+            work += "Case 2b: k = " + (step+1) + "&nbsp; r = " + r[step-1] + "&nbsp; k &le; r";
+            work += "<p style='margin-left:98px'>new Z-box contained starts inside existing Z-box<br>";
+            work += "Possible to continue matching beyond current Z-box<br>";
             work += "Z[k'] &ge; &beta; &nbsp; ";
             work += "Z[k'] = " + z[kprime] + " &nbsp; ";
             work += "&beta; = " + beta + " &nbsp; ";
             work += z[kprime] + " &ge; " + beta; 
-            work += "<br>P[k..r[k-1]] matches P[1..&beta;] <br>";
-            work += "keep matching from P[r[k]] and P[&beta;+1]"
+            work += "keep matching from P[r+1] and P[&beta;+1]"
             work += "</div><div class='col-md-4'>"
             work += "Z[" + (step+1) + "] = " + z[step];
             work += "<br>l[" + (step+1) + "] = " + (step+1) + "<br>";
-            work += "r[" + (step+1) + "] = " + r[step-1] + "</div>";
+            work += "r[" + (step+1) + "] = " + r[step] + "</div>";
         } else {
             work = work;
         }
         if (step < plength) {
             step++;
-            $("#disclaimer").show();
             $("#zstepback").show();
             $("#zstep").show();
             $("#zvals").show();
@@ -533,7 +563,7 @@ $(document).ready(function(){
     	for (var i = 0; i < p.length; i++) {
     		str += "-";
     	}
-    	for (var i = p.length; i < z.length; i++) {
+    	for (var i = p.length; i < concat.length; i++) {
     		if (z[i] == p.length) {
                 str += "<strong>";
             }
@@ -543,6 +573,7 @@ $(document).ready(function(){
             }
 
     	}
+            $("#disclaimer").show();
     		$("#solution").show();
     		$("#solution").append(str);
 	});
@@ -550,6 +581,9 @@ $(document).ready(function(){
     $("#spbtn").click(function(){
     	$("#values").empty();
     	var p = $("#input_pattern").val();
+        if (p != "ABCDABD") {
+            $("#input_text").val('');
+        }
     	p = p.replace(/\s+/g, '');
     	p = p.toUpperCase();
     	for (var i = 1; i < p.length; i++) {
@@ -591,11 +625,13 @@ $(document).ready(function(){
 		$("#values").append(html);
 		$("#input_text").show();
 		$("#runkmp").show();
+        $("#kmpstep").show();
 		$("#input_text").focus();
     });
 
 	$("#runkmp").click(function(){
-	    $("#solution").empty();	
+	    $("#solution").empty();
+        $("#solutionkmp").empty();
 		var p = $("#input_pattern").val();
     	p = p.replace(/\s+/g, '');
     	p = p.toUpperCase();
@@ -609,38 +645,179 @@ $(document).ready(function(){
 		var F = [0];
 
 		var str = "";
+        var occurence = "";
+        var nummatch = 0;
+        var matchi = [0];
 		for (var i = 1; i < m+1; i++) {
 			var j = i%10;
 			str += j;
 			str += " ";
 		}
 		str += "<br>";
-		str += t.split('').join(' ');;
-		str += "<br><br>"; 
-		for (var i = 1; i < n+1; i++) {
-			F[i] = sp[i-1] + 1; 
+
+        F[1] = 1; 
+		for (var i = 2; i <= n+1; i++) {
+			F[i] = sp[i-2] + 1; 
 		}
 		var c = 1;
 		var pi = 1;
-		do {
-			do { //found match, continue
+		while ((c + (n - pi)) <= m) {
+			while (p[pi-1] == t[c-1] && pi <= n) { //found match, continue
 				pi++;
 				c++;
 			} 
-			while (p[pi-1] == t[c-1] && pi <= n);
 			if (pi == n + 1) {
-				str += "Occurence starting at position ";
-				str += c-n;
-				str += " <br> ";
+				occurence += "Occurence starting at position ";
+				occurence += c-n;
+				occurence += " <br> ";
+                matchi[nummatch] = c-n;
+                nummatch++;
 			} 
 			if (pi == 1) {
 				c++;
 			}
-			pi = F[pi-1]; //how much we skip
-		} while ((c + n - pi) <= m);
+			pi = F[pi]; //how much we skip
+		} 
+        
+        var bold = [0];
+        for (var i = 0; i < t.length; i++) {
+            bold[i] = 0;
+        }
+        for (var i = 0; i < t.length; i++) {
+            for (var j = 0; j < matchi.length; j++) {
+                if (i > matchi[j]-2 && i < matchi[j] + p.length-1) {
+                    bold[i] = 1;
+                } 
+            }
+        }
+        for (var i = 0; i < t.length; i++) {
+            if (bold[i] == 1) {
+                str += "<strong>";
+            }
+            str += t[i];
+            str += " ";
+            if (bold[i] == 1) {
+                str += "</strong>";
+            }
+        }
     	$("#solution").show();
+        $("#solutionkmp").show();
     	$("#solution").append(str);
+        $("#solutionkmp").append(occurence);
 	});
+
+    $("#kmpstep").click(function(){
+        $("#solution").empty();
+        $("#solutionkmp").empty();
+        var p = $("#input_pattern").val();
+        p = p.replace(/\s+/g, '');
+        p = p.toUpperCase();
+
+        var t = $("#input_text").val();
+        t = t.replace(/\s+/g, '');
+        t = t.toUpperCase();
+
+        var n = p.length;
+        var m = t.length;
+        var F = [0];
+
+        var str_text = "";
+        var str_patt = "";
+        for (var i = 1; i < m+1; i++) {
+            var j = i%10;
+            str_text += j;
+            str_text += " ";
+        }
+        str_text += "<br>";
+        for (var i = 0; i < m; i++) {
+            str_text += t[i];
+            str_text += " ";
+        }
+        str_text += "<br>";
+        
+        var red = 0;
+        for (var i = 0; i < n; i++) {
+            str_patt += p[i];
+            str_patt += " ";
+        }
+        str_patt += "<br>";
+        F[1] = 1; 
+        for (var i = 2; i <= n+1; i++) {
+            F[i] = sp[i-2] + 1; 
+        }
+        $("#solution").show();
+        $("#solutionkmp").show();
+        $("#solution").append(str_text);
+        $("#solutionkmp").append(str_patt);
+        $("#kmpstep").hide();
+        $("#next").show();
+        var c = 1;
+        var pi = 1;
+        var shift = 0;
+        var progress = 0;
+        var match = 0;
+        $("#next").click(function(){
+
+            var patt = "";
+            var expl = "";
+            if (c + (n-pi) <= m) {
+                while (p[pi-1] == t[c-1] && pi <= n) { //found match, continue
+                    pi++;
+                    c++;
+                } 
+                if (pi == n + 1) {
+                    expl += "Occurence found at position ";
+                    expl += c-n;
+                    expl += " <br> ";
+                    expl += "Skip ";
+                    expl += (n-sp[n-1]);
+                    expl += " slots and continue";
+                }
+                if (pi == 1) {
+                    c++;
+                }
+                match = pi-1;
+                shift = pi;
+                pi = F[pi]; //how much we skip
+                if (shift > 1) {
+                    shift = shift - pi;
+                }
+                if (shift < n) {
+                    expl += "Mismatch: Skip " + shift + " slots<br>";
+                }
+                for (var i = 0; i < n + progress; i++) {
+                    if (i < progress) {
+                        patt += "&nbsp; "
+                    } else {
+                        if (i - progress < match) {
+                            patt += "<span style='background-color:lime'>";
+                        } else if (i - progress == match) {
+                            patt += "<span style='background-color:red'>"
+                        }
+                        patt += p[i - progress];
+                        patt += " ";
+                        if (i - progress <= match) {
+                            patt += "</span>";
+                        }
+                    }
+                }
+                progress = progress + shift;
+                patt += "<br>";
+            } else {
+                expl = "Reached end of text";
+            }
+            $("#solutionkmp").empty();
+            $("#solutionkmp").show();
+            $("#kmprestart").show();
+            $("#solutionkmp").append(patt);
+            $("#solutionkmp").append(expl);
+        });
+    });
+
+    $("#kmprestart").click(function() {
+        $("#kmpstep").click();
+        $("#kmprestart").hide();
+    });
 
     $("#zalgo").click(function(){
     	$("#input_pattern").show();
@@ -684,8 +861,9 @@ $(document).ready(function(){
     $("#clear").click(function(){
     	$("#values").empty();
     	$("#solution").empty();
-    	$("#input_pattern").val('');
-    	$("#input_text").val('');
+        $("#solutionkmp").empty();
+    	$("#input_pattern").val("ABCDABD");
+    	$("#input_text").val("ABCYABCDABYABCDABCDABDE");
     	$("#input_pattern").hide();
     	$("#input_text").hide();
     	$("#spbtn").hide();
@@ -704,6 +882,7 @@ $(document).ready(function(){
         $("#zvals").hide();
         $("#work").hide();
         $("#disclaimer").hide();
+        $("#next").hide();
         step = 0;
     });
 });

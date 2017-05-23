@@ -54,11 +54,14 @@
 
       <div class="intro cour">
         <h1>Applet</h1>
-        <input type="text" id="input_pattern" placeholder="Enter Pattern Here">
+    <!--/
+        <input type="text" id="input_pattern" placeholder="Enter Pattern Here" value="ABXYABXZ">
+    -->
+        <input type="text" id="input_pattern" placeholder="Enter Pattern Here" value="ABCDABD">
         <button id="zalgo">Z Algorithm</button>
         <button id="kmp">KMP Algorithm</button>
-        <button id="zbtn">Generate Z values</button>
-        <button id="spbtn">Generate sp' values</button>
+        <button id="zbtn">Generate Z Values</button>
+        <button id="spbtn">Generate sp' Values</button>
         <button id="clear">Restart</button>
         <table class="table" id="values">
         </table>
@@ -71,16 +74,23 @@
         </div>
 
         <div class="row" id="work"></div>
-        <p id = "disclaimer"> 
-            *All numbers in stepping through have the tens place cut out for formatting. r and l values can only increase so I expect it is still easy to read. The real values will be shown above in the
-            explanation as you get to them. Numbers are bolded if the tens place is truncated.
-        </p>
-        <input type="text" id="input_text" placeholder="Enter Text Here">
-        <button id="runz">Find matches</button>
-        <button id="runkmp">Find matches</button>
+ 
+    <!--/
+        <input type="text" id="input_text" placeholder="Enter Text Here" value="XABXYABXYABXZXABX">
+    -->
+        <input type="text" id="input_text" placeholder="Enter Text Here" value="ABCYABCDABYABCDABCDABDE">
+        <button id="runz">Find Matches</button>
+        <button id="runkmp">Find Matches</button>
+        <button id="kmpstep">Step Through</button>
+        <button id="next">Step Through</button>
+        <button id="kmprestart">Start Over</button>
+
         <p id="solution">
         </p>
         <p id="solutionkmp">
+        </p>
+        <p id = "disclaimer"> 
+            *Z values over 9 will not be formatted correctly.
         </p>
       </div>
 
