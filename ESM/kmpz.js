@@ -580,6 +580,13 @@ $(document).ready(function(){
 
     $("#spbtn").click(function(){
     	$("#values").empty();
+        $("#solution").empty();
+        $("#solutionkmp").empty();
+        $("#kmpstep").hide();
+        $("#next").hide();
+        $("#kmprestart").hide();
+        $("#solution").hide();
+        $("#solutionkmp").hide();
     	var p = $("#input_pattern").val();
         if (p != "ABCDABD") {
             $("#input_text").val('');
@@ -755,16 +762,17 @@ $(document).ready(function(){
         var pi = 1;
         var shift = 0;
         var progress = 0;
+        var progress2 = 0;
         var match = 0;
         $("#next").click(function(){
-
+            var matchfound = 0;
             var patt = "";
             var expl = "";
             if (c + (n-pi) <= m) {
                 while (p[pi-1] == t[c-1] && pi <= n) { //found match, continue
                     pi++;
                     c++;
-                } 
+                }
                 if (pi == n + 1) {
                     expl += "Occurence found at position ";
                     expl += c-n;
@@ -772,18 +780,31 @@ $(document).ready(function(){
                     expl += "Skip ";
                     expl += (n-sp[n-1]);
                     expl += " slots and continue";
+                    matchfound = 1;
                 }
                 if (pi == 1) {
                     c++;
                 }
+
                 match = pi-1;
                 shift = pi;
                 pi = F[pi]; //how much we skip
+
                 if (shift > 1) {
                     shift = shift - pi;
                 }
-                if (shift < n) {
+                progress2 = progress2 + shift;
+
+                if (shift < n && matchfound == 0) {
                     expl += "Mismatch: Skip " + shift + " slots<br>";
+                    matchfound = 0;
+                    if (shift > 1) {
+                        expl += "Mismatch with character at position " + (progress2+1) + " in T<br>";
+                        expl += "Next comparison between T[" + (progress2+1) + "] and P[sp'<sub>" + match + "</sub> + 1] = P[" + (sp[match]+1) + "]<br>";
+                    } else {
+                        expl += "Mismatch with character at position " + progress2 + " in T<br>";
+                        expl += "Next comparison between T[" + progress2 + "] and P[sp'<sub>" + match + "</sub> + 1] = P[" + (sp[match]+1) + "]<br>";
+                    }
                 }
                 for (var i = 0; i < n + progress; i++) {
                     if (i < progress) {
@@ -801,7 +822,7 @@ $(document).ready(function(){
                         }
                     }
                 }
-                progress = progress + shift;
+                progress = progress + shift;                
                 patt += "<br>";
             } else {
                 expl = "Reached end of text";
@@ -883,6 +904,7 @@ $(document).ready(function(){
         $("#work").hide();
         $("#disclaimer").hide();
         $("#next").hide();
+        $("#kmprestart").hide();
         step = 0;
     });
 });
