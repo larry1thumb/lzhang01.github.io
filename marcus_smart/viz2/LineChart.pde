@@ -44,6 +44,10 @@ public class LineChart {
         stroke(axes);
         line(x1, y1, x1, y2);
         line(x1, y2, x2, y2);
+        textSize(24);
+        textAlign(CENTER);
+        text("Three Point Percentage Time Series", (x1+x2)/2, 0.1*height);
+        textSize(12);
         for (int i = 0; i <= 10; i = i+1) {
             line(x1 - tick_length, y2 - i*y_interval, x1, y2 - i*y_interval);
             int txt = int(min_value + i*y_scale);
@@ -86,7 +90,7 @@ public class LineChart {
 
             if (mouseX < xx2 && mouseX > xx1 && mouseY < yy2 && mouseY > yy1) {
                 float desc_fl = (values[i-1]);
-                String desc = String.format("%.01f", desc_fl);
+                String desc = Float.toString(desc_fl);
                 desc += " 3P%";
                 fill(#87cefa);
                 ellipse(x1 + i*x_interval - x_interval/2, y2 - val1, 5, 5);                

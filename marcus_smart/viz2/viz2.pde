@@ -4,7 +4,7 @@ void setup() {
     size(1000, 600);
     background(#f2f2f2);
     p = new Parser("./nba_shooting.csv");
-    l = new LineChart(width, height, p.season, p.tpp, "3-Pointers Attempted per Game");
+    l = new LineChart(width, height, p.season, p.tpp, "3 Point Percentage");
 }
 
 void draw() {
