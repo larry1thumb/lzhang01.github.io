@@ -117,4 +117,11 @@ public class LineChart {
             ellipse(x1 + 17*x_interval - x_interval/2, y2 - (ylength * values[16]/max_value), 75, 75);
         }
     }
+    void show_tooltip() {
+        textAlign(LEFT);
+        text("The NBA shortened the 3 point arc between", x1 + 17*x_interval - x_interval/2, 2.3*height/4);
+        text("the 1994-95 and 1997-98 seasons", x1 + 17*x_interval - x_interval/2, 15 + 2.3*height/4);
+        noFill();
+        ellipse(x1 + 17*x_interval - x_interval/2, y2 - (ylength * values[16]/max_value), 75, 75);
+    }
 }
