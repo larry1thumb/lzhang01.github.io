@@ -90,7 +90,7 @@ public class LineChart {
 
             if (mouseX < xx2 && mouseX > xx1 && mouseY < yy2 && mouseY > yy1) {
                 float desc_fl = (values[i-1]);
-                String desc = Float.toString(desc_fl);
+                String desc = nfc(desc_fl, 1);
                 desc += " 3P%";
                 fill(#87cefa);
                 ellipse(x1 + i*x_interval - x_interval/2, y2 - val1, 5, 5);                
