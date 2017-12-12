@@ -25,7 +25,7 @@ void draw() {
 void button() {
     rectMode(CORNER);
     noFill();
-    rect(0.86 * width, 0.02 * height, 0.13 * width, 0.04 * height);
+    rect(0.86 * width, 0.02 * height, 0.12 * width, 0.04 * height);
     textAlign(LEFT, CENTER);
     text("Show/Hide Tooltip", 0.87 * width, 0.04 * height);
 }
