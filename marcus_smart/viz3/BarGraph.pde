@@ -112,7 +112,7 @@ public class BarGraph {
 
             if (mouseX < xx2 && mouseX > xx1 && mouseY < yy2 && mouseY > yy1) {
                 float desc_fl = (values[i-1]);
-                String desc = String.format("%.01f", desc_fl);
+                String desc = nfc(desc_fl, 1);
                 if (xlabel == "Points Per Game") {
                     desc += "ppg";
                 } else if (xlabel == "Rebounds Per Game") {
@@ -130,13 +130,7 @@ public class BarGraph {
                 }
                 
                 
-                
-                
-                
-                
-                //String desc = names[i-1] + ", " + Integer.toString(desc_int);
-                //text(desc, x1 + i*x_interval, yy1 - tick_length);
-                
+            
                 fill(#87cefa);
                 rect(x1 + i*x_interval - x_interval/2, y2 - val1/2, x_interval/2, val1);
                 fill(#000000);
