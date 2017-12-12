@@ -6,7 +6,7 @@ color c = color(#003399);
 void setup() {
     size(800, 600);
     background(#ffffff);
-    p1 = new Parser("./v3.csv");
+    p1 = new Parser("./viz3.csv");
     bad = new BarGraph(800, 600, p1.names, p1.ppg, "Points Per Game", c);
 }
 
