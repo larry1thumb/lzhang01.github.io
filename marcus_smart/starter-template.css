@@ -10,3 +10,7 @@ body {
 	color: #ffffff;
 	font-size: 18px;
 }
+
+.text {
+	text-align: left;
+}
