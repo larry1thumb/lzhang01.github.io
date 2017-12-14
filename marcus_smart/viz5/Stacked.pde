@@ -37,7 +37,6 @@ public class Stacked {
         }
         
         min_value = 0;//min(y) - min(y) % 10;
-        float max = max(values1) + max(values2);
         max_value = 410;//max + (10 - max % 10);
 
         num_elements = names.length;
