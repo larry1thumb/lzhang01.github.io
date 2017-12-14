@@ -20,8 +20,8 @@ public class Transitions {
     }
 
     void fadeout() {
-        color c1 = #000000;
-        color c2 = #f2f2f2;
+        color c1 = color(0,0,0);
+        color c2 = color(#f2f2f2);
         if (sb0 == true) {
             s.axes = lerpColor(c1, c2, lerpi/50.0);
             s.clabel = lerpColor(c1, c2, lerpi/50.0);
@@ -46,8 +46,8 @@ public class Transitions {
     }
 
     void fadein() {
-        color c1 = #000000;
-        color c2 = #f2f2f2;
+        color c1 = color(#000000);
+        color c2 = color(#f2f2f2);
         if (sb1 == true) {
             b.axes = lerpColor(c2, c1, lerpi/50.0);
             b.clabel = lerpColor(c2, c1, lerpi/50.0);
@@ -84,7 +84,7 @@ public class Transitions {
                 rect(s.x1 + i*s.x_interval - s.x_interval/2, s.y2 - val1 - val2/2, s.bar_width, val2);
                 popStyle();
             }
-        } else {
+        } else if (bs1 == true) {
             s.axes = lerpColor(c2, c1, lerpi/50.0);
             s.clabel = lerpColor(c2, c1, lerpi/50.0);
             stroke(s.axes);
