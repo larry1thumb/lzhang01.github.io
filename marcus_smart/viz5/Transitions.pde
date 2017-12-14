@@ -26,7 +26,7 @@ public class Transitions {
             s.axes = lerpColor(c1, c2, lerpi/50.0);
             s.clabel = lerpColor(c1, c2, lerpi/50.0);
             s.render();
-        } else {
+        } else if (bs0 == true) {
             b.axes = lerpColor(c1, c2, lerpi/50.0);
             b.clabel = lerpColor(c1, c2, lerpi/50.0);
             b.render();
@@ -37,7 +37,7 @@ public class Transitions {
             if (sb0 == true) {
                 sb0 = false;
                 sb1 = true;
-            } else {
+            } else if (bs0 == true) {
                 bs0 = false;
                 bs1 = true;
             }
@@ -124,7 +124,7 @@ public class Transitions {
             if (sb1 == true) {
                 sb1 = false;
                 sb2 = true;
-            } else {
+            } else if (bs1 == true) {
                 bs1 = false;
                 bs2 = true;
             }
