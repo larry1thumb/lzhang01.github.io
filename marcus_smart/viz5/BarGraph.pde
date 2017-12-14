@@ -94,7 +94,7 @@ public class BarGraph {
 
             if (mouseX < xx2 && mouseX > xx1 && mouseY < yy2 && mouseY > yy1) {
                 float desc_fl = (values[i-1]);
-                String desc = String.format("%.01f", desc_fl);
+                String desc = nfc(desc_fl, 1);
                 desc += " fg%";
 
                 fill(#99ffcc);
