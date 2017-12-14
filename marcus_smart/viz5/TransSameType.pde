@@ -7,8 +7,6 @@ public class TransSameType {
     TransSameType(Stacked sg1, Stacked sg2) {
         s1 = sg1;
         s2 = sg2;
-        b1 = null;
-        b2 = null;
         done = false;
         a = true;
         b = false;
