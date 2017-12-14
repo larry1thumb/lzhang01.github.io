@@ -153,7 +153,7 @@ public class TransSameType {
             popStyle();
         }
         if (lerpi < 100) {
-            lerpi = lerpi + 4;
+            lerpi = lerpi + 5;
         } else {
             y = false;
             z = true;
