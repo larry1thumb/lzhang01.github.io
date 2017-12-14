@@ -27,11 +27,11 @@ void draw() {
     fill(c1);
     rect(width/2, height*3/4, 90, 15);
     fill(0, 0, 0);
-    text("On-Off ORtg", width/2 + 10, height*3/4);
+    text("On-Off ORtg", width/2 + 10, 1+height*3/4);
     fill(c2);
     rect(width/2 + 103, height*3/4, 35, 15);
     fill(0, 0, 0);
-    text("+/-", width/2 + 110, height*3/4);
+    text("+/-", width/2 + 110, 1+height*3/4);
     popStyle();
     //popup();
     textAlign(LEFT);
