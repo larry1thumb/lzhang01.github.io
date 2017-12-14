@@ -4,7 +4,8 @@ BarGraph b1, b2;
 CenteredBar c1, c2;
 Parser p;
 Transitions t, t2;
-TransSameType tst, tst2;
+TransSameType tst;
+TransSameType2 tst2;
 int mode;
 boolean init;
 
@@ -22,7 +23,7 @@ void setup() {
     t = new Transitions(s1, b1);
     t2 = new Transitions(s2, b2);
     tst = new TransSameType(s1, s2);
-    tst2 = new TransSameType(b1, b2);
+    tst2 = new TransSameType2(b1, b2);
     init = true;
 }
 
@@ -110,7 +111,7 @@ void draw() {
             if (tst2.a == true) {
                 tst2.fadeout();
             } else if (tst2.b == true) {
-                tst2.to3b();
+                tst2.to3();
             } else if (tst2.c == true) {
                 tst2.fadein();
             }
