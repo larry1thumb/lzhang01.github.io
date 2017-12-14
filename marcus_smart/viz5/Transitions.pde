@@ -32,7 +32,7 @@ public class Transitions {
             b.render();
         }
         if (lerpi < 50) {
-            lerpi++;
+            lerpi = lerpi + 5;
         } else {
             if (sb0 == true) {
                 sb0 = false;
@@ -119,7 +119,7 @@ public class Transitions {
             }
         }
         if (lerpi < 50) {
-            lerpi++;
+            lerpi = lerpi + 5;
         } else {
             if (sb1 == true) {
                 sb1 = false;
