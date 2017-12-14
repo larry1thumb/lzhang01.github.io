@@ -109,7 +109,7 @@ void draw() {
             if (tst2.a == true) {
                 tst2.fadeout();
             } else if (tst2.b == true) {
-                tst2.to3();
+                tst2.to3b();
             } else if (tst2.c == true) {
                 tst2.fadein();
             }

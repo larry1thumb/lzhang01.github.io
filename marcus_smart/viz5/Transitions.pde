@@ -32,7 +32,7 @@ public class Transitions {
             b.render();
         }
         if (lerpi < 50) {
-            lerpi++;
+            lerpi = lerpi + 4;
         } else {
             if (sb0 == true) {
                 sb0 = false;
@@ -119,7 +119,7 @@ public class Transitions {
             }
         }
         if (lerpi < 50) {
-            lerpi++;
+            lerpi = lerpi + 4;
         } else {
             if (sb1 == true) {
                 sb1 = false;
@@ -172,7 +172,7 @@ public class Transitions {
             popStyle();
         }
         if (lerpi < 100) {
-            lerpi++;
+            lerpi = lerpi + 4;
         } else {
             sb2 = false;
             sb3 = true;
@@ -220,7 +220,7 @@ public class Transitions {
             popStyle();
         }
         if (lerpi < 100) {
-            lerpi++;
+            lerpi = lerpi + 4;
         } else {
             sb3 = false;
             done = true;
@@ -268,7 +268,7 @@ public class Transitions {
             popStyle();
         }
         if (lerpi < 100) {
-            lerpi++;
+            lerpi = lerpi + 4;
         } else {
             bs2 = false;
             bs3 = true;
@@ -315,7 +315,7 @@ public class Transitions {
             popStyle();
         }
         if (lerpi < 100) {
-            lerpi++;
+            lerpi = lerpi + 4;
         } else {
             bs3 = false;
             done = true;
