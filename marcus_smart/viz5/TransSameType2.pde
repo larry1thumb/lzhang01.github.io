@@ -111,7 +111,7 @@ public class TransSameType2 {
         stroke(0, 0, 0);
         line(b2.x1, b2.y1, b2.x1, b2.y2);
         line(b2.x1, b2.y2, b2.x2, b2.y2);
-        for (int i = 0; i < 10; i = i+1) {
+        for (int i = 0; i <= 10; i = i+1) {
             line(b2.x1 - b2.tick_length, b2.y2 - i*b2.y_interval, b2.x1, b2.y2 - i*b2.y_interval);
             int txt = int(b2.min_value + i*b2.y_scale);
             textAlign(RIGHT);
