@@ -54,7 +54,7 @@ public class TransSameType {
             }
         }
         if (lerpi < 50) {
-            lerpi++;
+            lerpi = lerpi + 4;
         } else {
             if (a == true) {
                 a = false;
@@ -88,7 +88,7 @@ public class TransSameType {
             }
         }
         if (lerpi < 50) {
-            lerpi++;
+            lerpi = lerpi + 4;
         } else {
             if (c == true) {
                 c = false;
@@ -142,7 +142,7 @@ public class TransSameType {
                 popStyle();
             }
             if (lerpi < 100) {
-                lerpi++;
+                lerpi = lerpi + 4;
             } else {
                 b = false;
                 c = true;
@@ -182,7 +182,7 @@ public class TransSameType {
                 popStyle();
             }
             if (lerpi < 50) {
-                lerpi++;
+                lerpi = lerpi + 4;
             } else {
                 b = false;
                 c = true;
@@ -233,7 +233,7 @@ public class TransSameType {
                 popStyle();
             }
             if (lerpi < 100) {
-                lerpi++;
+                lerpi = lerpi + 4;
             } else {
                 y = false;
                 z = true;
@@ -273,7 +273,7 @@ public class TransSameType {
                 popStyle();
             }
             if (lerpi < 50) {
-                lerpi++;
+                lerpi = lerpi + 4;
             } else {
                 y = false;
                 z = true;
