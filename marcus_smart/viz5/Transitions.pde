@@ -132,7 +132,7 @@ public class Transitions {
         }
     }
 
-    void normalize() {
+    void normalize_vals() {
         //s.render();
         stroke(b.axes);
         line(b.x1, b.y1, b.x1, b.y2);

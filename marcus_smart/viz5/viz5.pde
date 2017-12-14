@@ -80,7 +80,7 @@ void draw() {
             } else if (t.sb1 == true) {
                 t.fadein();
             } else if (t.sb2 == true) {
-                t.normalize();
+                t.normalize_vals();
             } else if (t.sb3 == true) {
                 t.fade_misses();
             }
@@ -102,7 +102,7 @@ void draw() {
             } else if (t2.sb1 == true) {
                 t2.fadein();
             } else if (t2.sb2 == true) {
-                t2.normalize();
+                t2.normalize_vals();
             } else if (t2.sb3 == true) {
                 t2.fade_misses();
             }
