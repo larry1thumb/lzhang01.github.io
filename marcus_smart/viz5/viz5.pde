@@ -73,6 +73,7 @@ void draw() {
     } else if (mode == 2) {
         if (t.done == true || tst2.done == true) {
             b1.axes = #000000;
+            b1.clabel = #000000;
             b1.render();
         } else {
             if (t.sb0 == true) {

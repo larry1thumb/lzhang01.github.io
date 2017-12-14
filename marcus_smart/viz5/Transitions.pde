@@ -134,6 +134,8 @@ public class Transitions {
 
     void normalize_vals() {
         //s.render();
+        b.axes = #000000;
+        b.clabel = #000000;
         stroke(b.axes);
         line(b.x1, b.y1, b.x1, b.y2);
         line(b.x1, b.y2, b.x2, b.y2);
@@ -181,6 +183,8 @@ public class Transitions {
     }
 
     void fade_misses() {
+        b.axes = color(0,0,0);
+        b.clabel = color(0,0,0);
         stroke(b.axes);
         line(b.x1, b.y1, b.x1, b.y2);
         line(b.x1, b.y2, b.x2, b.y2);
