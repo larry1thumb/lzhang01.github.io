@@ -88,7 +88,7 @@ public class TransSameType {
             }
         }
         if (lerpi < 50) {
-            lerpi = lerpi + 4;
+            lerpi = lerpi + 5;
         } else {
             if (c == true) {
                 c = false;
