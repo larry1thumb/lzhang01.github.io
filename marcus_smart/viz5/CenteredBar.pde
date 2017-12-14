@@ -33,11 +33,11 @@ public class CenteredBar {
         float left, right;
         left = abs(min(y));
         right = max(y);
-        float max = max(y);
+        float maxVal= max(y);
         if (left > right) {
-            max = left;
+            maxVal= left;
         }
-        maxValue = (int) (max + (10 - max % 10));
+        maxValue = (int) (maxVal+ (10 - maxVal% 10));
         minValue = -1 * maxValue;
         barInterval = chartHeight/numElements;
         xScale = (maxValue - minValue) / 10;
