@@ -151,7 +151,7 @@ public class TransSameType {
     void to3b() {
         line(b1.x1, b1.y1, b1.x1, b1.y2);
         line(b1.x1, b1.y2, b1.x2, b1.y2);
-        for (int i = 0; i < 10; i = i+1) {
+        for (int i = 0; i < 8; i = i+1) {
             line(b1.x1 - b1.tick_length, b1.y2 - i*b1.y_interval, b1.x1, b1.y2 - i*b1.y_interval);
             int txt = int(b1.min_value + i*b1.y_scale);
             textAlign(RIGHT);
@@ -196,7 +196,7 @@ public class TransSameType {
         if (b1 == null) {
             line(s2.x1, s2.y1, s2.x1, s2.y2);
             line(s2.x1, s2.y2, s2.x2, s2.y2);
-            for (int i = 0; i <= 10; i = i+1) {
+            for (int i = 0; i < 8; i = i+1) {
                 line(s2.x1 - s2.tick_length, s2.y2 - i*s2.y_interval, s2.x1, s2.y2 - i*s2.y_interval);
                 int txt = int(s2.min_value + i*s2.y_scale);
                 textAlign(RIGHT);
