@@ -108,35 +108,35 @@ public class NBA_Arc {
             rect(left, lc_y, corner_width, corner_height);
             fill(0, 0, 0);
             textAlign(CENTER, CENTER);        
-            text(String.format("%.1f", percents[0]) + "%", pos_x + 0.05 * chart_width, pos_y + 0.80 * chart_height);
+            text(nfc(percents[0], 1) + "%", pos_x + 0.05 * chart_width, pos_y + 0.80 * chart_height);
             text(lc, pos_x + 0.05 * chart_width, pos_y + 0.84 * chart_height);
         } else if (mouseX > left && mouseX < pos_x + wing_width && mouseY < wing_height + pos_y && mouseY > top) {
             fill(212, 115, 19);
             rect(left, top, wing_width, wing_height);
             fill(0, 0, 0);
             textAlign(CENTER, CENTER);
-            text(String.format("%.1f", percents[1]) + "%", pos_x + 0.16 * chart_width, pos_y + 0.25 * chart_height);
+            text(nfc(percents[1], 1) + "%", pos_x + 0.16 * chart_width, pos_y + 0.25 * chart_height);
             text(lw, pos_x + 0.16 * chart_width, pos_y + 0.29 * chart_height);
         } else if (mouseX > center_x && mouseX < center_x + center_width && mouseY < center_height + pos_y && mouseY > top) {
             fill(212, 115, 19);
             rect(center_x, top, center_width, center_height);
             fill(0, 0, 0);
             textAlign(CENTER, CENTER);
-            text(String.format("%.1f", percents[2]) + "%", pos_x + 0.5 * chart_width, pos_y + 0.10 * chart_height);
+            text(nfc(percents[2], 1) + "%", pos_x + 0.5 * chart_width, pos_y + 0.10 * chart_height);
             text(c, pos_x + 0.5 * chart_width, pos_y + 0.14 * chart_height);
         } else if (mouseX > rw_x && mouseX < rw_x + wing_width && mouseY < wing_height + pos_y && mouseY > top) {
             fill(212, 115, 19);
             rect(rw_x, top, wing_width, wing_height);
             fill(0, 0, 0);
             textAlign(CENTER, CENTER);
-            text(String.format("%.1f", percents[3]) + "%", pos_x + 0.84 * chart_width, pos_y + 0.25 * chart_height);
+            text(nfc(percents[3], 1) + "%", pos_x + 0.84 * chart_width, pos_y + 0.25 * chart_height);
             text(rw, pos_x + 0.84 * chart_width, pos_y + 0.29 * chart_height);
         } else if (mouseX > rc_x && mouseX < rc_x + corner_width && mouseY < rc_y + corner_height && mouseY > rc_y) {
             fill(212, 115, 19);
             rect(rc_x, rc_y, corner_width, corner_height);
             fill(0, 0, 0);
             textAlign(CENTER, CENTER);
-            text(String.format("%.1f", percents[4]) + "%", pos_x + 0.95 * chart_width, pos_y + 0.80 * chart_height);
+            text(nfc(percents[4], 1) + "%", pos_x + 0.95 * chart_width, pos_y + 0.80 * chart_height);
             text(rc, pos_x + 0.95 * chart_width, pos_y + 0.84 * chart_height);
         }
 

@@ -127,8 +127,9 @@ public class BarGraph {
             float y22 = y2 - val1;
 
             if (mouseX < xx2 && mouseX > xx1 && mouseY < yy2 && mouseY > yy1) {
-                int desc_int = int(values1[i-1]);
-                String desc = names[i-1] + ", " + Integer.toString(desc_int);
+                String desc_int = nfc(values1[i-1], 0);
+                
+                String desc = names[i-1] + ", " + desc_int;
                 //text(desc, x1 + i*x_interval, yy1 - tick_length);
                 fill(#87cefa);
                 rect(x1 + i*x_interval - x_interval/2, y2 - val1/2, x_interval/2, val1);
@@ -139,8 +140,9 @@ public class BarGraph {
                 player = i-1;
             }
             if (mouseX < xx2 && mouseX > xx1 && mouseY < y22 && mouseY > y21) {
-                int desc_int = int(values2[i-1]);
-                String desc = names[i-1] + ", " + Integer.toString(desc_int);
+                String desc_int = nfc(values2[i-1], 0);
+                
+                String desc = names[i-1] + ", " + desc_int;
                 //text(desc, x1 + i*x_interval, yy1 - tick_length);
                 fill(#87cefa);
                 rect(x1 + i*x_interval - x_interval/2, y2 - val1 - val2/2, bar_width, val2);

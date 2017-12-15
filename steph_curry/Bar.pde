@@ -103,9 +103,9 @@ public class Bar {
             float yy2 = y2;
 
             if (mouseX < xx2 && mouseX > xx1 && mouseY < yy2 && mouseY > yy1) {
-                int desc_int = int(values[i-1]);
+                String desc_int = nfc(values[i-1], 0);
                 
-                String desc = names[i-1] + ", " + Integer.toString(desc_int);
+                String desc = names[i-1] + ", " + desc_int;
                 //text(desc, x1 + i*x_interval, yy1 - tick_length);
                 fill(#87cefa);
                 rect(x1 + i*x_interval - x_interval/2, y2 - val1/2, x_interval/2, val1);
