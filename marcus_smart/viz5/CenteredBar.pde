@@ -73,13 +73,44 @@ public class CenteredBar {
             text(names[i], xPos, chartYTop + i*barInterval);
         }
     }
-    
+
     public void draw_bars() {
         for (int i = 0; i < numElements; i++) {
             float val = (chartWidth/2) * values[i]/10;
             rectMode(CORNERS);
             fill(barColor);
-            rect(chartXCenter, chartYTop + i*barInterval, chartXCenter + val, chartYTop + i*barInterval + barWidth); 
+            rect(chartXCenter, chartYTop + i*barInterval, chartXCenter + val, chartYTop + i*barInterval + barWidth);
+        }
+    }
+
+    public void highlight() {
+        for (int i = 0; i < numElements; i++) {
+            float val = (chartWidth/2) * values[i]/10;
+            float x1, x2, y1, y2;
+            float xText, yText;
+            if (val >= 0) {
+                x1 = chartXCenter;
+                x2 = x1 + val;
+                y1 = chartYTop + i*barInterval;
+                y2 = y1 + barWidth;
+                textAlign(LEFT);
+                xText = x2 + 5;
+                yText = y2-5;
+            } else {
+                x1 = chartXCenter - val;
+                x2 = chartXCenter;
+                y1 = chartYTop + i*barInterval;
+                y2 = y1 + barWidth;
+                textAlign(RIGHT);
+                xText = x1 - 5;
+                yText = y2-5;
+            }
+            if (mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2) {
+                fill(#0dd5fc);
+                rect(chartXCenter, chartYTop + i*barInterval, chartXCenter + val, chartYTop + i*barInterval + barWidth);
+                fill(0,0,0);
+                text(values[i], xText, yText);
+            }
         }
     }
 }

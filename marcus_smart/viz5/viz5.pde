@@ -166,6 +166,8 @@ void draw() {
 
     c1.render();
     c2.render();
+    c1.highlight();
+    c2.highlight();
 }
 
 void mouseClicked() {
