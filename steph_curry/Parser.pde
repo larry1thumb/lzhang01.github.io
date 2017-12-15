@@ -146,6 +146,5 @@ public class Parser {
             pum[i-1] = float(data[16]);
             totalpercent[i-1] = data[6];
         }
-        printArray(totalpercent);
     }
 }
