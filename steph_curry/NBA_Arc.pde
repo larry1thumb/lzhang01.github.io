@@ -70,15 +70,15 @@ public class NBA_Arc {
         textAlign(CENTER, CENTER);
         text(player, arc_x, pos_y + chart_height/1.5);
         text(perc, arc_x, pos_y + chart_height/1.5 + 10);
-        text(String.format("%.1f", percents[0]) + "%", pos_x + 0.05 * chart_width, pos_y + 0.80 * chart_height);
+        text(nfc(percents[0], 1) + "%", pos_x + 0.05 * chart_width, pos_y + 0.80 * chart_height);
         text(lc, pos_x + 0.05 * chart_width, pos_y + 0.84 * chart_height);
-        text(String.format("%.1f", percents[1]) + "%", pos_x + 0.16 * chart_width, pos_y + 0.25 * chart_height);
+        text(nfc(percents[1], 1) + "%", pos_x + 0.16 * chart_width, pos_y + 0.25 * chart_height);
         text(lw, pos_x + 0.16 * chart_width, pos_y + 0.29 * chart_height);
-        text(String.format("%.1f", percents[2]) + "%", pos_x + 0.5 * chart_width, pos_y + 0.10 * chart_height);
+        text(nfc(percents[2], 1) + "%", pos_x + 0.5 * chart_width, pos_y + 0.10 * chart_height);
         text(c, pos_x + 0.5 * chart_width, pos_y + 0.14 * chart_height);
-        text(String.format("%.1f", percents[3]) + "%", pos_x + 0.84 * chart_width, pos_y + 0.25 * chart_height);
+        text(nfc(percents[3], 1) + "%", pos_x + 0.84 * chart_width, pos_y + 0.25 * chart_height);
         text(rw, pos_x + 0.84 * chart_width, pos_y + 0.29 * chart_height);
-        text(String.format("%.1f", percents[4]) + "%", pos_x + 0.95 * chart_width, pos_y + 0.80 * chart_height);
+        text(nfc(percents[4], 1) + "%", pos_x + 0.95 * chart_width, pos_y + 0.80 * chart_height);
         text(rc, pos_x + 0.95 * chart_width, pos_y + 0.84 * chart_height);
         popStyle();
     }
