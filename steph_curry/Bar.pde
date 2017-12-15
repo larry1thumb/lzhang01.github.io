@@ -104,6 +104,7 @@ public class Bar {
 
             if (mouseX < xx2 && mouseX > xx1 && mouseY < yy2 && mouseY > yy1) {
                 int desc_int = int(values[i-1]);
+                
                 String desc = names[i-1] + ", " + Integer.toString(desc_int);
                 //text(desc, x1 + i*x_interval, yy1 - tick_length);
                 fill(#87cefa);

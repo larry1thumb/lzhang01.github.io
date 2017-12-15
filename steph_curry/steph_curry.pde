@@ -9,7 +9,6 @@ NBA_Arc other;
 void setup() {
     size(1400, 800);
     background(#ffffff);
-    surface.setResizable(true);
     p = new Parser("./15-16.csv");
     b = new BarGraph(700, 350, p.names, p.tpm, p.cashm, p.pum, p.headers);
     color c1 = #4682b4;
