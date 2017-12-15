@@ -26,6 +26,7 @@ public class ScatterPlot {
         num_elements = yvals.length;
         ylabel = ylbl;
         x1label = x1lbl;
+        x1label += " (in.)";
         float diff = max(y1) - min(y1);
         diff = diff/10.0;
         yscale = (int) Math.ceil(diff);
@@ -88,6 +89,21 @@ public class ScatterPlot {
             }
             popStyle();
         }
+        fill(191,24,24);
+        ellipse(xpos, .8*height, pointSize, pointSize);
+        fill(0,0,0);
+        text("Point Guard", xpos + 10, .8*height+5);
+        
+        fill(31,164,44);
+        ellipse(xpos, .8*height + 20, pointSize, pointSize);
+        fill(0,0,0);
+        text("Wing", xpos + 10, .8*height+25);
+        
+        fill(117,60,191);
+        ellipse(xpos, .8*height + 40, pointSize, pointSize);
+        fill(0,0,0);
+        text("Big", xpos + 10, .8*height+45);
+        
     }
 
     color mark_positions(int i) {
