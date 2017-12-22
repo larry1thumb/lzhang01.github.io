@@ -123,7 +123,13 @@
           -->
           <canvas data-processing-sources="AhoCorasick2/AhoCorasick2.pde AhoCorasick2/Keyword_Tree.pde"></canvas><br><br>
         </p>
-
+        <p class="lead">
+          We use the <em>lp(v)</em> value to prove correctness in finding all n(v) in linear time. <br>For a quick refresher, <em>lp(v)</em> is the length of the longest proper suffix of <em>L(v)</em> that is a prefix of a pattern.<br>
+          Take a single pattern P of length <em>t</em> in the keyword tree. We look at the time to find the failure links for every node in P. As stated before, the first node has <em>lp(v)</em> = 0. From here, the most lp() can increase is 1 for every node on the path. So during the computation for all <em>n(v)</em> in P, <em>lp()</em> can increase by a total of at most <em>t</em>, the length of P. <br>
+          On the other hand, everytime we can't find a match, and follow the next failure link, the node depth decreases by at least 1. Lastly lp() is never negative.  <br>
+          Combining everything together we find that lp() can only be increased by at most <em>t</em> and no more than <em>t</em> failure links can be followed, so all failure links on path P can be found in O(t) time.
+          Expanding this out to all patterns in the keyword tree, failure links can be found in time proportional to the sum of all pattern lengths, O(n) time.
+        </p>
       </div>
 
     </div><!-- /.container -->
