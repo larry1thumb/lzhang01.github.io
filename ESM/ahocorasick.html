@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="bootstrap-3.3.7/favicon.ico">
+
+    <title>Exact String Matching</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="processing.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="bootstrap-3.3.7/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="kmpz.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="bootstrap-3.3.7/assets/js/ie-emulation-modes-warning.js"></script>
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="kmpz.html">Exact String Matching</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class><a href="kmpz.html">Introduction</a></li>
+            <li><a href="z.html">Z Algorithm</a></li>
+            <li><a href="kmp.html">KMP Algorithm</a></li>
+            <li><a href="app.html">Applet</a></li>
+            <li><a href="realtime.html">Real time KMP</a></li>
+            <li class="active"><a href="#">Aho Corasick</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="intro">
+        <h1>Aho-Corasick</h1>
+        <h3>Exact Set Matching</h3>
+        <h2>Problem Space</h2>
+        <p class="lead">
+          Given a set of patterns, find all occurences in a text of any of the patterns. If we were to just use either of the linear time algorithms just discussed, the exact set matching problem can be solved in O(n+zm) time. m is the is the length of text T, n is the total length of all the patterns, and z is the number of patterns in P. We can just separately use Z or KMP for each pattern to get this time complexity. The Aho-Corasick method uses ideas in KMP to solve the exact set matching problem in O(n+m+k) time where k is the number of occurences of any pattern in T.
+        </p>
+
+        <h2>Keyword Trees</h2>
+        <p class="lead">
+          We introduce the idea of keyword trees to help solve the exact set matching problem. <br>
+          A keyword tree is a directed graph that satisfies 3 conditions:
+        </p>
+          <ol>
+          <li>Each edge is labeled with one character. </li>
+          <li>Any two edges out of one node are distinct.</li>
+          <li>Evey pattern maps to some node in the keyword tree such that the the characters from the root exactly spell out the pattern. Every leaf of the tree is mapped to a pattern</li>
+          </ol>
+          <p class="lead">
+          Staying within the english language, there are a fixed number of characters. This allows us to easily construct a keyword tree in O(n) time.
+        </p>
+        <p class="lead">
+          To add a pattern <em>P</em> to a keyword tree <em>K</em>, just start at the root and follow the unique path in <em>K</em> that matches with <em>P</em>. When no further match is possible, create a new path out of the last match. Even intuitively we can see that this is a linear time build as we do constant work at every character in the set of patterns. We guarantee constant work since we are working with a fixed constant size alphabet.
+        </p>
+        <!--
+          Processing: AhoCorasick3.pde 
+        -->
+        <canvas data-processing-sources="AhoCorasick3/AhoCorasick3.pde AhoCorasick3/Keyword_Tree.pde"></canvas><br><br>
+        <p class="lead">
+          Using this keyword tree for the exact set matching problem doesn't immediately give us our needed speed up. If we just use it naively, we spend min(m,n) time traversing the keyword tree for all <em>m</em> characters in the text. This gives us O(mn) time, still far away from our stated O(n+m+k) time.
+        </p>
+        <h2>Knuth-Morris-Pratt Speedup</h2>
+        <p class="lead">
+          The Aho-Corasick method uses the same exact ideas as KMP for pattern matching. As KMP allows us to shift the pattern by more than one spot, Aho-Corasick allows us to skip over initial parts of the keyword tree. Instead of using <em>sp'</em> values, we use add failure links to the keyword tree that operate the same as <em>sp'</em> values. 
+        </p>
+        <p class="lead">
+          First we will define some terms to explain the algorithm.
+          Each node <em>v</em> is labeled by the string from the characters on the path to <em>v</em>. <br>
+          Let <em>L(v)</em> be the label on node <em>v</em> <br>
+          Let <em>lp(v)</em> be the length of the longest proper suffix of <em>L(v)</em> that is a prefix of a pattern.<br>
+          Let <em>n(v)</em> be the node in keyword tree <em>K</em> labeled with the suffix of <em>L(v)</em> of length <em>lp(v)</em>. <br>
+          Lastly we define a failure link as the ordered pair <em>(v, n(v))</em><br>
+        </p>
+        <p class="lead">
+          Given failure links, we can speed up the algorithm in a way directly comparable to KMP. Instead of the mapping from i to <em>sp'<sub>i</sub></em> we map <em>v</em> to <em>n(v)</em>. This is the exact same idea as KMP as we can can shift multiple positions depending on the failure link and we guarantee that we never compare characters to the left of the current character in the text. By never repeating comparisons, the search portion of Aho-Corasick takes only O(m) time.
+        </p>
+        <!--
+          Processing: AhoCorasick.pde 
+        -->
+        <canvas data-processing-sources="AhoCorasick/AhoCorasick.pde AhoCorasick/Keyword_Tree.pde"></canvas><br><br>
+        <h2>Creating Keyword Tree in Linear Time</h2>
+        <p class="lead">
+          Now that we have established that given a keyword tree with failure links, we can solve the exact set matching problem in linear time, we must show that we can find all failure links in linear time as well. 
+        </p>
+        <p class="lead">
+          The goal here is the find <em>n(v)</em> for every node v in the keyword tree. <br>
+          Let's say for some <em>k</em>, <em>n(v)</em> is known for every node that is <em>k</em> or fewer edges from the root. 
+          To find <em>n(v)</em>, we look at it's parent, <em>v'</em>. <br>
+          <em>v</em> and <em>v'</em> are connected by an edge labeled by character <em>x</em>. Logically the first thing to check is if there is a edge labeled with x from <em>n(v')</em> which is already known since it is only k edges away from the root. <br> 
+          If that edge does exist, then we are done and n(v) is the node connected to the edge labeled with <em>x</em>. If not, we continue onto <em>n(n(v'))</em> and check for a match again. <em>n(n(v'))</em> is known since <em>n(v')</em> is also <em>k</em> or fewer edges from the root. We repeat this search until either a match with <em>x</em> is found or one of the failure links is the root and no match is found again. <br>
+          In the latter case <em>n(v)</em> is the root. <br><br>
+          Explaining this algorithm in words can be quite complicated, so following this is an applet that allows you to see how each failure link is derived from the previous visualization.
+          The algorithm begins with failure links from the root and children of the root that point back to the root. We progress in a breadth first search type manner until all nodes are calculated.
+          <!--
+            Processing: AhoCorasick2.pde
+          -->
+          <canvas data-processing-sources="AhoCorasick2/AhoCorasick2.pde AhoCorasick2/Keyword_Tree.pde"></canvas><br><br>
+        </p>
+
+      </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="bootstrap-3.3.7/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="bootstrap-3.3.7/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
